@@ -1,17 +1,18 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { World } from "../../Interfaces/World";
-import { User } from "../../Interfaces/User";
-import { RoutingUrls } from "../../app-routing/routing-urls";
-import { UiDesignService } from "../../services/ui-design.service";
-import { TdMediaService } from "@covalent/core";
-import { Router } from "@angular/router";
-import { WorldService } from "../../services/world.service";
-import { TranslateService } from "@ngx-translate/core";
-import { AuthenticationService } from "../../authentication/authentication.service";
-import { PermissionService } from "../../services/permission.service";
-import { UserService } from "../../services/user.service";
-import { UiDesign } from 'app/Interfaces/UiDesign';
-import { EventService } from 'app/services/event.service';
+import {Component, OnInit} from '@angular/core';
+import {World} from '../../Interfaces/World';
+import {User} from '../../Interfaces/User';
+import {RoutingUrls} from '../../app-routing/routing-urls';
+import {UiDesignService} from '../../services/ui-design.service';
+import {TdMediaService} from '@covalent/core';
+import {Router} from '@angular/router';
+import {WorldService} from '../../services/world.service';
+import {TranslateService} from '@ngx-translate/core';
+import {AuthenticationService} from '../../authentication/authentication.service';
+import {PermissionService} from '../../services/permission.service';
+import {UserService} from '../../services/user.service';
+import {UiDesign} from 'app/Interfaces/UiDesign';
+import {EventService} from 'app/services/event.service';
+import {MatSidenav} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-main-layout',
@@ -53,6 +54,13 @@ export class MainLayoutComponent implements OnInit {
 
   public unseenEventsAvailable: boolean;
 
+
+  sidenav: MatSidenav;
+
+  close() {
+    this.sidenav.close();
+  }
+
   constructor(
     private uiDesignService: UiDesignService,
     public media: TdMediaService,
@@ -90,7 +98,7 @@ export class MainLayoutComponent implements OnInit {
     this.setBackground();
     this.userService.loadUser();
 
-    
+
     this.media.broadcast();
     this.translate.get('APP_COMPONENT').subscribe((page_names) => {
       this.pageNames = page_names;
@@ -279,7 +287,7 @@ export class MainLayoutComponent implements OnInit {
 
     return element;
   }
-  
+
   updateLastTavernVisit(): void {
     this.unseenEventsAvailable = false;
     this.userService.updateLastTavernVisit();

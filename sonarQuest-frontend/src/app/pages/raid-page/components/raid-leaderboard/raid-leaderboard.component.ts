@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { RaidLeaderboard } from 'app/Interfaces/RaidLeaderboard';
-import { ITdDataTableColumn } from '@covalent/core';
-import { UserService } from 'app/services/user.service';
-import { ImageService } from 'app/services/image.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {RaidLeaderboard} from 'app/Interfaces/RaidLeaderboard';
+import {ITdDataTableColumn} from '@covalent/core';
 
 @Component({
   selector: 'app-raid-leaderboard',
@@ -14,13 +12,24 @@ export class RaidLeaderboardComponent implements OnInit {
   raidLeaderboard: RaidLeaderboard[];
 
   columns: ITdDataTableColumn[] = [
-    { name: 'user.username', label: 'Name' },
-    { name: 'scoreXp', label: 'XP' },
-    { name: 'scoreGold', label: 'Gold' }
+    {name: 'user.username', label: 'Name'},
+    {name: 'scoreXp', label: 'XP'},
+    {name: 'scoreGold', label: 'Gold'}
   ]
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.raidLeaderboard = this.raidLeaderboard.sort((score1, score2) => {
+      if (score1.scoreXp > score2.scoreXp) {
+        return 1;
+      }
+      if (score1.scoreXp < score2.scoreXp) {
+        return -1;
+      }
+      return 0;
+    });
   }
+
 }

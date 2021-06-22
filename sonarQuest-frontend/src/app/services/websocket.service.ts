@@ -1,20 +1,20 @@
-import { RaidService } from 'app/services/raid.service';
-import { EventUserDto } from './../Interfaces/EventUserDto';
-import { World } from '../Interfaces/World';
-import { WorldService } from './world.service';
-import { EventService } from 'app/services/event.service';
-import { UserService } from 'app/services/user.service';
-import { Message } from '../Interfaces/Message';
+import {EventUserDto} from './../Interfaces/EventUserDto';
+import {World} from '../Interfaces/World';
+import {WorldService} from './world.service';
+import {EventService} from 'app/services/event.service';
+import {UserService} from 'app/services/user.service';
+import {Message} from '../Interfaces/Message';
 import * as SockJS from 'sockjs-client';
-import { Injectable } from '@angular/core';
-import { Stomp } from '@stomp/stompjs';
-import { User } from 'app/Interfaces/User';
+import {Injectable} from '@angular/core';
+import {Stomp} from '@stomp/stompjs';
+import {User} from 'app/Interfaces/User';
+import {environment} from '../../environments/environment';
 
 
 @Injectable()
 export class WebsocketService {
 
-  private serverUrl = 'http://localhost:8080/socket';
+  private serverUrl = environment.endpoint + '/socket';
   private stompClient;
   private user: User;
   private currentWorld: World;

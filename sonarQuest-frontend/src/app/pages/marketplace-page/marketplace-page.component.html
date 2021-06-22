@@ -26,24 +26,25 @@
           <ng-template tdDataTableTemplate="buy" let-value="value" let-row="row" let-column="column">
             <div layout="row">
               <div *ngIf="!my_artefacts_id.includes(row.id)">
-                <button mat-icon-button (click)="buyArtefact(row)" 
-                  [matTooltip]="'MARKETPLACE_PAGE.BUY_ITEM_COMPULSORY' | translate"
-                  [matTooltipClass]="'tooltipMultiline'" 
-                  matTooltipPosition="below">
+                <button mat-icon-button (click)="buyArtefact(row)"
+                        [matTooltip]="'MARKETPLACE_PAGE.BUY_ITEM_COMPULSORY' | translate"
+                        [matTooltipClass]="'tooltipMultiline'"
+                        matTooltipPosition="below">
                   <i class="ra ra-diamond ra-2x"></i>
                 </button>
               </div>
               <div *ngIf="my_artefacts_id.includes(row.id)">
-                <mat-icon class="icon" 
-                  [matTooltip]="'MARKETPLACE_PAGE.ALREADY_OWNED_ITEM' | translate"
-                  [matTooltipClass]="'tooltipMultiline'" 
-                  matTooltipPosition="below">check_box</mat-icon>
+                <mat-icon class="icon"
+                          [matTooltip]="'MARKETPLACE_PAGE.ALREADY_OWNED_ITEM' | translate"
+                          [matTooltipClass]="'tooltipMultiline'"
+                          matTooltipPosition="below">check_box
+                </mat-icon>
               </div>
               <div layout="row">
-                <button mat-icon-button (click)="viewArtefact(row)" 
-                  [matTooltip]="'MARKETPLACE_PAGE.SHOW_ITEM' | translate"
-                  [matTooltipClass]="'tooltipMultiline'" 
-                  matTooltipPosition="below">
+                <button mat-icon-button (click)="viewArtefact(row)"
+                        [matTooltip]="'MARKETPLACE_PAGE.SHOW_ITEM' | translate"
+                        [matTooltipClass]="'tooltipMultiline'"
+                        matTooltipPosition="below">
                   <i class="ra ra-scroll-unfurled ra-2x"></i>
                 </button>
               </div>
@@ -53,11 +54,33 @@
         <div class="mat-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
           <h3>{{"TABLE.INFO.NO_ENTRIES"| translate}}</h3>
         </div>
-        <td-paging-bar *ngIf="dataTable.hasData" #pagingBar [pageSize]="5" [total]="filteredTotal" (change)="page($event)">
+        <td-paging-bar *ngIf="dataTable.hasData" #pagingBar [pageSize]="5" [total]="filteredTotal"
+                       (change)="page($event)">
           <span td-paging-bar-label hide-xs>{{"TABLE.INFO.ENTRIES_OF_THIS_PAGE"| translate}}</span> {{pagingBar.range}}
           <span hide-xs>{{"TABLE.INFO.OF"| translate}} {{pagingBar.total}}</span>
         </td-paging-bar>
       </div>
     </mat-card-content>
   </mat-card>
+  <div class="row">
+    <div class="col-md-3">
+      <mat-card>
+        <mat-card-content>Meine Artefakte</mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-content>Marktplatz</mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-3">
+      <mat-card>
+        <mat-card-content>Highscore</mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <app-dashboard></app-dashboard>
 </div>
+

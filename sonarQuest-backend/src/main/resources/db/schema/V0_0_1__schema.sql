@@ -11,7 +11,8 @@ CREATE TABLE SQLevel (
   id  BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   sqlevel int,
   min_xp BIGINT,
-  max_xp BIGINT
+  max_xp BIGINT,
+  abc BIGINT
 );
 
 CREATE TABLE Avatar_Class (

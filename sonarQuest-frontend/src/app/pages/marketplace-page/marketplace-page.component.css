@@ -1,0 +1,7 @@
+.mainstage {
+  position: relative;
+}
+
+.nebeneinander {
+  display: flex;
+}

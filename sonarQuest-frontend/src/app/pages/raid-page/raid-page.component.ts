@@ -1,14 +1,14 @@
-import { RaidLeaderboard } from 'app/Interfaces/RaidLeaderboard';
-import { Raid } from 'app/Interfaces/Raid';
-import { RaidService } from 'app/services/raid.service';
-import { BaseMonster } from './../../game-model/base-monster';
-import { Monster } from './../../Interfaces/Monster';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Task } from 'app/Interfaces/Task';
-import { EventService } from 'app/services/event.service';
-import { Quest } from 'app/Interfaces/Quest';
+import {RaidLeaderboard} from 'app/Interfaces/RaidLeaderboard';
+import {Raid} from 'app/Interfaces/Raid';
+import {RaidService} from 'app/services/raid.service';
+import {BaseMonster} from './../../game-model/base-monster';
+import {Monster} from './../../Interfaces/Monster';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {Task} from 'app/Interfaces/Task';
+import {EventService} from 'app/services/event.service';
+import {Quest} from 'app/Interfaces/Quest';
 
 @Component({
   selector: 'app-raid-page',
@@ -44,6 +44,7 @@ export class RaidPageComponent implements OnInit, OnDestroy {
       _this.raid = resp;
       _this.raidLeaderBoardList = resp.raidLeaderboardList;
       _this.quests = resp.quests;
+      this.sortLeaderBoard();
       this.sortRaidQuests();
     });
   }
@@ -51,10 +52,22 @@ export class RaidPageComponent implements OnInit, OnDestroy {
   private sortRaidQuests() {
     this.quests.sort((quest1, quest2) => {
       if (quest1.questProgress > quest2.questProgress) {
-          return -1;
+        return -1;
       }
       if (quest1.questProgress < quest2.questProgress) {
-          return 1;
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  private sortLeaderBoard() {
+    this.raidLeaderBoardList.sort((score1, score2) => {
+      if (score1.scoreXp > score2.scoreXp) {
+        return -1;
+      }
+      if (score1.scoreXp < score2.scoreXp) {
+        return 1;
       }
       return 0;
     });
