@@ -1,5 +1,5 @@
-import { QualitygatePageComponent } from './../pages/qualitygate-page/qualitygate-page.component';
-import { RaidListPageComponent } from '../pages/raid-list-page/raid-list-page.component';
+import {QualitygatePageComponent} from './../pages/qualitygate-page/qualitygate-page.component';
+import {RaidListPageComponent} from '../pages/raid-list-page/raid-list-page.component';
 import {EventPageComponent} from '../pages/event-page/event-page.component';
 import {AdminPageComponent} from '../pages/admin-page/admin-page.component';
 import {MarketplacePageComponent} from '../pages/marketplace-page/marketplace-page.component';
@@ -13,13 +13,15 @@ import {GamemasterPageComponent} from '../pages/gamemaster-page/gamemaster-page.
 import {AuthenticationGuard} from '../authentication/authentication.guard';
 import {EmptyPageComponent} from '../pages/empty-page/empty-page.component';
 import {RoutingUrls} from './routing-urls';
-import {LoginPageComponent} from "../pages/login-page/login-page.component";
-import {MainLayoutComponent} from "../layouts/main-layout/main-layout.component";
-import { RaidPageComponent } from 'app/pages/raid-page/raid-page.component';
+import {LoginPageComponent} from '../pages/login-page/login-page.component';
+import {MainLayoutComponent} from '../layouts/main-layout/main-layout.component';
+import {RaidPageComponent} from 'app/pages/raid-page/raid-page.component';
+import {DashboardComponent} from '../pages/dashboard/dashboard.component';
 
 
 const appRoutes: Routes = [
-  {path: '', component: MainLayoutComponent, canActivateChild: [AuthenticationGuard], children: [
+  {
+    path: '', component: MainLayoutComponent, canActivateChild: [AuthenticationGuard], children: [
       {path: '', redirectTo: RoutingUrls.myAvatar, pathMatch: 'full'},
       {path: RoutingUrls.start, component: StartPageComponent},
       {path: RoutingUrls.myAvatar, component: MyAvatarPageComponent},
@@ -31,16 +33,17 @@ const appRoutes: Routes = [
       {path: RoutingUrls.events, component: EventPageComponent},
       {path: RoutingUrls.raids, component: RaidListPageComponent},
       {path: RoutingUrls.raid, component: RaidPageComponent},
-      {path: RoutingUrls.qualitygate, component: QualitygatePageComponent}
+      {path: RoutingUrls.qualitygate, component: QualitygatePageComponent},
+      {path: RoutingUrls.dashboard, component: DashboardComponent},
     ]
   },
   {path: RoutingUrls.login, component: LoginPageComponent},
   {path: RoutingUrls.empty, component: EmptyPageComponent}
 ];
 
-@NgModule({ 
+@NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes, { onSameUrlNavigation: 'reload' })
+    RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'})
   ],
   exports: [
     RouterModule

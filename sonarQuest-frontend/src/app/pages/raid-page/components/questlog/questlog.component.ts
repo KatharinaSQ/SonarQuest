@@ -1,11 +1,11 @@
-import { Quest } from './../../../../Interfaces/Quest';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { User } from 'app/Interfaces/User';
-import { UserService } from 'app/services/user.service';
-import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material';
-import { QuestService } from 'app/services/quest.service';
-import { ViewParticipatedQuestComponent } from 'app/pages/quest-page/components/participated-quests/components/view-participated-quest/view-participated-quest.component';
+import {Quest} from './../../../../Interfaces/Quest';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {User} from 'app/Interfaces/User';
+import {UserService} from 'app/services/user.service';
+import {Subscription} from 'rxjs';
+import {MatDialog} from '@angular/material';
+import {QuestService} from 'app/services/quest.service';
+import {ViewParticipatedQuestComponent} from 'app/pages/quest-page/components/participated-quests/components/view-participated-quest/view-participated-quest.component';
 
 @Component({
   selector: 'app-questlog',
@@ -15,7 +15,6 @@ import { ViewParticipatedQuestComponent } from 'app/pages/quest-page/components/
 export class QuestlogComponent implements OnInit, OnDestroy {
   @Input()
   public questList: Quest[];
-
   user: User;
   userSubscription: Subscription;
 

@@ -25,10 +25,10 @@
       </a>
       <mat-divider mat-inset></mat-divider>
     </div>
-    <div *ngIf="isAdventuresVisible">
-      <a mat-list-item routerLink="/{{adventuresUrl}}">
+    <div *ngIf="isDashboardVisible">
+      <a mat-list-item routerLink="/{{dashboardUrl}}">
         <i mat-list-icon class="ra ra-blade-bite ra-lg navlist"></i>
-        <h3 mat-line>{{"APP_COMPONENT.ADVENTURES"| translate}} </h3>
+        <h3 mat-line>Dashboard </h3>
       </a>
       <mat-divider mat-inset></mat-divider>
     </div>

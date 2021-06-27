@@ -12,5 +12,6 @@ export const RoutingUrls = {
   login: 'login',
   raids: 'raids',
   raid: 'raid/:id',
-  qualitygate: 'qualitygate'
+  qualitygate: 'qualitygate',
+  dashboard: 'dashboard'
 };

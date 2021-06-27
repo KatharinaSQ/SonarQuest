@@ -1,5 +1,5 @@
 <mat-card *ngFor="let quest of questList">
-    <mat-card>
+
         <div class="d-flex justify-content-start align-items-center">
             <img [src]="quest.image" [alt]="quest.title" class="d-none" #questImage>
             <div class="questlog-quest-image overflow-hidden border m-2 rounded-circle"
@@ -14,7 +14,9 @@
                     <i mat-list-icon class="ra ra-gold-bar ra-lg"></i><span class="p-1">{{quest?.gold}}</span>
                     <i mat-list-icon class="ra ra-perspective-dice-random ra-lg"></i><span
                         class="p-1">{{quest?.xp}}</span>
-                    <button mat-icon-button (click)="viewQuest(quest)"
+
+
+                  <button mat-icon-button (click)="viewQuest(quest)"
                         [matTooltip]="'QUEST_PAGE.SHOW_QUEST' | translate" [matTooltipClass]="'tooltipMultiline'"
                         matTooltipPosition="below" class="ra ra-quill-ink ra-2x">
                     </button>
@@ -30,5 +32,5 @@
             <app-tasklog [quest]="quest" [taskList]="quest.tasks">
             </app-tasklog>
         </mat-expansion-panel>
-    </mat-card>
+
 </mat-card>

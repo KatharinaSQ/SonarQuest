@@ -30,7 +30,8 @@ export class MainLayoutComponent implements OnInit {
   private clickToggleDesignButton = false;
 
   public myAvatarUrl = RoutingUrls.myAvatar;
-  public adventuresUrl = RoutingUrls.adventures;
+  /*  public adventuresUrl = RoutingUrls.adventures;*/
+  public dashboardUrl = RoutingUrls.dashboard;
   public raidsUrl = RoutingUrls.raids;
   public qualityGateRaidUrl = RoutingUrls.qualitygate;
   public questsUrl = RoutingUrls.quests;
@@ -49,6 +50,7 @@ export class MainLayoutComponent implements OnInit {
   public isEventVisible: boolean;
   public isRaidsVisible: boolean;
   public isQualityGateRaidVisible: boolean;
+  public isDashboardVisible: boolean;
 
   public body = <HTMLScriptElement><any>document.getElementsByTagName('body')[0];
 
@@ -126,6 +128,7 @@ export class MainLayoutComponent implements OnInit {
     this.isGamemasterVisible = enable && this.permissionService.isUrlVisible(RoutingUrls.gamemaster);
     this.isAdminVisible = enable && this.permissionService.isUrlVisible(RoutingUrls.admin);
     this.isEventVisible = enable && this.permissionService.isUrlVisible(RoutingUrls.events);
+    this.isDashboardVisible = enable && this.permissionService.isUrlVisible(RoutingUrls.dashboard);
   }
 
 
@@ -162,6 +165,8 @@ export class MainLayoutComponent implements OnInit {
   determinePageTitle(url: string): string {
     if (this.pageNames) {
       switch (url) {
+        case '/dashboard':
+          return this.pageNames.DASHBOARD;
         case '/start':
           return this.pageNames.STARTPAGE;
         case '/myAvatar':
@@ -169,7 +174,7 @@ export class MainLayoutComponent implements OnInit {
         case '/adventures':
           return this.pageNames.ADVENTURES;
         case '/raids':
-            return this.pageNames.RAIDS;
+          return this.pageNames.RAIDS;
         case '/quests':
           return this.pageNames.QUESTS;
         case '/marketplace':
@@ -190,27 +195,29 @@ export class MainLayoutComponent implements OnInit {
 
   ddeterminePageTitle() {
     let url = this.router.url
-      if (url == '/start') {
-          return this.pageNames.STARTPAGE;
-      } else if (url == '/myAvatar') {
-          return this.pageNames.MY_AVATAR;
-      } else if (url == '/adventures') {
-          return this.pageNames.ADVENTURES;
-      } else if (url == '/raids') {
-        return this.pageNames.RAIDS;
-      } else if (url == '/quests') {
-          return this.pageNames.QUESTS;
-      } else if (url == '/marketplace') {
-          return this.pageNames.MARKETPLACE;
-      } else if (url == '/gamemaster') {
-          return this.pageNames.GAMEMASTER;
-      } else if (url == '/admin') {
-          return this.pageNames.ADMIN;
-      } else if (url == '/events') {
-          return this.pageNames.EVENTS;
-      } else {
-          return '';
-      }
+    if (url === '/start') {
+      return this.pageNames.STARTPAGE;
+    } else if (url === '/myAvatar') {
+      return this.pageNames.MY_AVATAR;
+    } else if (url === '/adventures') {
+      return this.pageNames.ADVENTURES;
+    } else if (url === '/raids') {
+      return this.pageNames.RAIDS;
+    } else if (url === '/quests') {
+      return this.pageNames.QUESTS;
+    } else if (url === '/marketplace') {
+      return this.pageNames.MARKETPLACE;
+    } else if (url === '/gamemaster') {
+      return this.pageNames.GAMEMASTER;
+    } else if (url === '/admin') {
+      return this.pageNames.ADMIN;
+    } else if (url === '/dashboard') {
+      return this.pageNames.DASHBOARD;
+    } else if (url === '/events') {
+      return this.pageNames.EVENTS;
+    } else {
+      return '';
+    }
   }
 
   updateWorld(world: World) {
@@ -218,7 +225,7 @@ export class MainLayoutComponent implements OnInit {
   }
 
   changeBackground(image: string) {
-    if (image != "") {
+    if (image !== '') {
       this.body.style.backgroundImage = 'url("/assets/images/background/' + image + '.jpg")';
     } else {
       this.body.style.backgroundImage = 'url("")';

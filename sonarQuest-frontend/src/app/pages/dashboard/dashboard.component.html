@@ -1,1 +1,91 @@
 <h1> Dashboard</h1>
+
+<div>
+
+  <div>
+    <div class="row">
+
+      <div class="col-sm-9">
+
+
+        <div class="row">
+          <!-- FORTSCHRITT-->
+          <div class="col-8 col-sm-6">
+            <mat-card>
+              <mat-card-content>Fortschritt</mat-card-content>
+            </mat-card>
+
+          </div>
+
+          <!--AVATAR-->
+          <div class="col-4 col-sm-6">
+            <mat-card>
+              <mat-card-content>AVATAR</mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+
+        <mat-card>
+          <mat-card-content>
+            <div>
+              <mat-tab-group>
+                <mat-tab label="Quest">Hier stehen die Quest
+                </mat-tab>
+                <mat-tab label="Raid"> Content 2</mat-tab>
+              </mat-tab-group>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!--HIGHSCORE-->
+      <div class="col-8 col-sm-3">
+        <mat-card>
+          <mat-card-content>
+            <h4>Highscore</h4>
+            <div>
+              <mat-tab-group>
+                <mat-tab label="Quest">
+                  <div>
+                    <ul>
+                      <li> 1.Dominik</li>
+                      <li> 2.Stefanie</li>
+                      <li> 3.Dirk</li>
+                      <li> 4.Katharina</li>
+                    </ul>
+                  </div>
+                </mat-tab>
+
+                <mat-tab label="Raid">
+                  <div>
+                    <ul>
+                      <li> 1.Alexander</li>
+                      <li> 2.Natascha</li>
+                      <li> 3.Andrea</li>
+                      <li> 4.Sophie</li>
+                    </ul>
+                  </div>
+                </mat-tab>
+              </mat-tab-group>
+
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+
+<div *ngFor="let quest of allQuest">
+
+  <h5 matTooltip="{{quest.story}}">{{ quest.title }}</h5>
+
+</div>
+
+

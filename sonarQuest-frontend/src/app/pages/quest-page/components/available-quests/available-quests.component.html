@@ -17,10 +17,12 @@
         [(ngModel)]="selectedRows" [sortOrder]="sortOrder" (sortChange)="sort($event)">
         <ng-template tdDataTableTemplate="edit" let-value="value" let-row="row" let-column="column">
           <div layout="row">
+
             <button mat-icon-button (click)="viewQuest(row)" [matTooltip]="'QUEST_PAGE.SHOW_QUEST' | translate"
               [matTooltipClass]="'tooltipMultiline'" matTooltipPosition="below">
               <i class="ra ra-quill-ink ra-lg"></i>
             </button>
+
           </div>
         </ng-template>
       </td-data-table>
@@ -42,9 +44,11 @@
         {{"QUEST_PAGE.AVAILABLE_QUESTS_FOR_WORLD"| translate}} <strong>{{currentWorld?.name}}</strong>
       </h2>
     </div>
+
     <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
       <div *ngFor="let quest of availableQuests" fxFlex="0 1 calc(33.3% -32px)" fxFlex.lt-lg="0 1 calc(50% - 32px)" fxFlex.lt-md="100%">
         <mat-card id="questcard">
+          <!--    QUESTNAME UND QUEST BILD-->
           <mat-card-header>
             <img mat-card-avatar [src]="quest.image" alt="Image of the Quest {{ quest.title }}">
             <mat-card-title>
@@ -52,6 +56,8 @@
             </mat-card-title>
             <mat-card-subtitle>{{quest.adventure?.title}}</mat-card-subtitle>
           </mat-card-header>
+
+          <!--    Belohnung-->
           <mat-card-content>
             <div>
               {{"TABLE.COLUMNS.GOLD" | translate}}: {{quest.gold}}
@@ -64,6 +70,8 @@
             </div>
 
           </mat-card-content>
+
+          <!--     BUTTONS-->
           <mat-card-actions>
             <div align="right">
               <button mat-icon-button (click)="viewQuest(quest)" [matTooltip]="'QUEST_PAGE.SHOW_QUEST' | translate"
