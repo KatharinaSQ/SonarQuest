@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Quest} from '../../Interfaces/Quest';
-import {QuestService} from '../../services/quest.service';
-import {WorldService} from '../../services/world.service';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../Interfaces/User';
+import {UserService} from '../../services/user.service';
+import {ImageService} from '../../services/image.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +9,26 @@ import {WorldService} from '../../services/world.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  @Input()
-  public allQuest: Quest [];
 
-  constructor(private questService: QuestService, private worldService: WorldService) {
+  public user: User;
+  public img: any = '';
+
+  constructor(private userService: UserService, private imageService: ImageService) {
+    this.userService.user$.subscribe(user => {
+      this.user = user;
+      this.getAvatar();
+    });
+
   }
+
+  private getAvatar() {
+    if (this.user) {
+      this.userService.getImage().subscribe((blob) => {
+        this.imageService.createImageFromBlob(blob).subscribe(image => this.img = image);
+      });
+    }
+  }
+
 
   ngOnInit() {
   }

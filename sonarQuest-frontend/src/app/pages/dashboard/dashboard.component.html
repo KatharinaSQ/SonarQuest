@@ -1,4 +1,4 @@
-<h1> Dashboard</h1>
+<h1> Dashboard - {{user.username}} </h1>
 
 <div>
 
@@ -12,7 +12,11 @@
           <!-- FORTSCHRITT-->
           <div class="col-8 col-sm-6">
             <mat-card>
-              <mat-card-content>Fortschritt</mat-card-content>
+              <mat-card-content>
+                <div>
+                  <app-progress></app-progress>
+                </div>
+              </mat-card-content>
             </mat-card>
 
           </div>
@@ -20,18 +24,48 @@
           <!--AVATAR-->
           <div class="col-4 col-sm-6">
             <mat-card>
-              <mat-card-content>AVATAR</mat-card-content>
+              <mat-card-content>
+                <div class="row">
+                  <div class="col-2 col-sm-6">
+
+                    Avatar <br>
+                    <div class="avatar-image">
+                      <img [src]="img" alt="The image of your avatar.">
+                    </div>
+                  </div>
+
+
+                  <div class="col-2 col-sm-6">
+                    <h5>Klasse: {{user.avatarClass.name}} </h5>
+                    <br>
+                    <h5>Rasse: {{ user.avatarRace.name}}</h5>
+                    <h5>XP: {{user.xp}}</h5>
+                    <h5>Gold: {{user.gold}}</h5>
+                  </div>
+                </div>
+              </mat-card-content>
             </mat-card>
           </div>
         </div>
 
+        <!--      QUEST UND RAIDS-->
         <mat-card>
           <mat-card-content>
             <div>
               <mat-tab-group>
-                <mat-tab label="Quest">Hier stehen die Quest
+                <mat-tab label="Quest">
+
+                  <div>
+                    <app-available-quests></app-available-quests>
+                  </div>
+
                 </mat-tab>
-                <mat-tab label="Raid"> Content 2</mat-tab>
+                <mat-tab label="Raid">
+                  <div>
+                    <h2 align="center">Verfügbare Raids</h2>
+                    <app-raids-page></app-raids-page>
+                  </div>
+                </mat-tab>
               </mat-tab-group>
             </div>
 
@@ -41,36 +75,12 @@
 
       <!--HIGHSCORE-->
       <div class="col-8 col-sm-3">
-        <mat-card>
-          <mat-card-content>
-            <h4>Highscore</h4>
-            <div>
-              <mat-tab-group>
-                <mat-tab label="Quest">
-                  <div>
-                    <ul>
-                      <li> 1.Dominik</li>
-                      <li> 2.Stefanie</li>
-                      <li> 3.Dirk</li>
-                      <li> 4.Katharina</li>
-                    </ul>
-                  </div>
-                </mat-tab>
+        <mat-card class="highscore">
 
-                <mat-tab label="Raid">
-                  <div>
-                    <ul>
-                      <li> 1.Alexander</li>
-                      <li> 2.Natascha</li>
-                      <li> 3.Andrea</li>
-                      <li> 4.Sophie</li>
-                    </ul>
-                  </div>
-                </mat-tab>
-              </mat-tab-group>
+          <div>
+            <app-highscore></app-highscore>
+          </div>
 
-            </div>
-          </mat-card-content>
         </mat-card>
 
       </div>
@@ -81,11 +91,5 @@
 
 </div>
 
-
-<div *ngFor="let quest of allQuest">
-
-  <h5 matTooltip="{{quest.story}}">{{ quest.title }}</h5>
-
-</div>
 
 

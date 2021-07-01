@@ -73,12 +73,13 @@
 
           <!--     BUTTONS-->
           <mat-card-actions>
-            <div align="right">
+            <div class="quest-button" align="right">
               <button mat-icon-button (click)="viewQuest(quest)" [matTooltip]="'QUEST_PAGE.SHOW_QUEST' | translate"
                       [matTooltipClass]="'tooltipMultiline'" matTooltipPosition="below">
                 <i class="ra ra-quill-ink ra-2x"></i>
               </button>
-              <button mat-icon-button (click)="participateInQuest(quest)" [matTooltip]="'QUEST_PAGE.JOIN_QUEST' | translate"
+              <button mat-icon-button (click)="participateInQuest(quest)"
+                      [matTooltip]="'QUEST_PAGE.JOIN_QUEST' | translate"
                       [matTooltipClass]="'tooltipMultiline'" matTooltipPosition="below">
                 <i class="ra ra-sword ra-2x"></i>
               </button>
