@@ -17,6 +17,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
+import {ChartsModule, ThemeService} from 'ng2-charts';
 import {
   MatButtonModule,
   MatCardModule,
@@ -124,6 +125,7 @@ import {RaidLeaderboardComponent} from './pages/raid-page/components/raid-leader
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {HighscoreComponent} from './pages/dashboard/highscore/highscore.component';
 import {ProgressComponent} from './pages/dashboard/progress/progress.component';
+import {ShowArtefactComponent} from './pages/marketplace-page/components/show-artefact/show-artefact.component';
 
 
 // AoT requires an exported function for factories
@@ -195,7 +197,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RaidLeaderboardComponent,
     DashboardComponent,
     HighscoreComponent,
-    ProgressComponent
+    ProgressComponent,
+    ShowArtefactComponent
   ],
   entryComponents: [
     EditWorldComponent,
@@ -267,7 +270,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSnackBarModule,
     SweetAlert2Module.forRoot(),
     SvgIconsModule,
-    SwiperModule
+    SwiperModule,
+    ChartsModule
   ],
   providers: [TdMediaService,
     WorldService,
@@ -295,6 +299,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PermissionService,
     WizardService,
     EventService,
+    ThemeService,
     WebsocketService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true},
   ],

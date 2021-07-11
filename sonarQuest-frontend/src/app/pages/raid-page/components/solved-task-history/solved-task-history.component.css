@@ -1,12 +1,16 @@
+@import '~swiper/dist/css/swiper.min.css';
+
 .title {
-    font-family: 'Indie Flower', cursive;
+  font-family: 'Indie Flower', cursive;
 }
+
 .history-wrapper {
-    height: 140px;
+  height: 140px;
 }
+
 .task-history-bar {
-    display: inline-block;
-    background-color: #00AA00;
+  display: inline-block;
+  background-color: #00AA00;
     align-self: flex-end;
     width: 85px;
     position: absolute;
@@ -59,7 +63,7 @@
 
 
 
-@import '~swiper/dist/css/swiper.min.css';
+
 
 .history-goldStar-Img {
     width: 72px;
@@ -68,7 +72,7 @@ p.condition-title {
     font-weight: bold;
     font-variant: small-caps;
     letter-spacing: 2px;
-}  
+}
 .condition-info p {
     padding: 0;
     margin: 0;

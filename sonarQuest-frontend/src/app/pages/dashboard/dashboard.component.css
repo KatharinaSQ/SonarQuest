@@ -2,3 +2,15 @@
   height: 100%;
 }
 
+.avatar-image img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}
+
+
+.runde-ecken {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px
+}

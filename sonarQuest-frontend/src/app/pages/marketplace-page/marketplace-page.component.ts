@@ -1,18 +1,19 @@
 import {
+  IPageChangeEvent,
   ITdDataTableColumn,
-  TdDataTableSortingOrder,
-  TdDataTableService,
   ITdDataTableSortChangeEvent,
-  IPageChangeEvent
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 import {Artefact} from '../../Interfaces/Artefact';
 import {ArtefactService} from '../../services/artefact.service';
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../Interfaces/User';
 import {UserService} from '../../services/user.service';
-import { MatDialog } from '@angular/material';
-import { ArtefactViewDetailsComponent } from './components/artefact-view-details/artefact-view-details.component';
-import { TranslateService } from '@ngx-translate/core';
+import {MatDialog} from '@angular/material';
+import {ArtefactViewDetailsComponent} from './components/artefact-view-details/artefact-view-details.component';
+import {TranslateService} from '@ngx-translate/core';
+import {SwiperConfigInterface} from 'ngx-swiper-wrapper';
 
 @Component({
   selector: 'app-marketplace-page',
@@ -23,7 +24,7 @@ export class MarketplacePageComponent implements OnInit {
 
   artefacts: Artefact[];
   my_artefacts_id: number[] = [];
-  public level: number;  
+  public level: number;
   public gold: number;
 
   columns: ITdDataTableColumn[] = [
@@ -37,7 +38,7 @@ export class MarketplacePageComponent implements OnInit {
 
   user: User;
   userArtefacts: Artefact[]
- 
+
   filteredData: any[];
   filteredTotal: number;
   searchTerm = '';
@@ -47,6 +48,22 @@ export class MarketplacePageComponent implements OnInit {
   sortBy = 'name';
   selectedRows: any[] = [];
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
+  swiperConfig: SwiperConfigInterface = {
+    a11y: true,
+    direction: 'horizontal',
+    slidesPerView: 3,
+    spaceBetween: 30,
+    centeredSlides: true,
+    height: 20,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  };
 
   constructor(
     private artefactService: ArtefactService,
@@ -66,9 +83,8 @@ export class MarketplacePageComponent implements OnInit {
         {name: 'quantity', label: col_names.QUANTITY},
         {name: 'minLevel.levelNumber', label: col_names.MIN_LEVEL},
         {name: 'buy', label: ''}]
-    });    
+    });
 
-    
 
     this.userService.user$.subscribe(user => {
       this.user = user
