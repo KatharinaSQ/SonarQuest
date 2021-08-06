@@ -2,15 +2,29 @@
   height: 100%;
 }
 
-.avatar-image img {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-}
-
-
 .runde-ecken {
-  border-radius: 10px;
+  border-radius: 200px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px
 }
+
+.mat-card {
+  /*  background: #535D6B !important;*/
+  min-height: 90% !important;
+  min-width: 100% !important;
+  max-height: 100% !important;
+  max-width: 100% !important;
+
+
+}
+
+.progress-content {
+  min-height: 90% !important;
+  min-width: 100% !important;
+  max-height: 90% !important;
+  max-width: 100% !important;
+}
+
+/*.mat-card-dashboard {
+  box-shadow: 3px 3px black, -1em 0 0.4em black !important;
+}*/

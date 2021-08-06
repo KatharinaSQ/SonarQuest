@@ -126,6 +126,10 @@ import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {HighscoreComponent} from './pages/dashboard/highscore/highscore.component';
 import {ProgressComponent} from './pages/dashboard/progress/progress.component';
 import {ShowArtefactComponent} from './pages/marketplace-page/components/show-artefact/show-artefact.component';
+import {AvatarComponent} from './pages/dashboard/avatar/avatar.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {RulesComponent} from './layouts/main-layout/rules/rules.component';
 
 
 // AoT requires an exported function for factories
@@ -198,7 +202,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     DashboardComponent,
     HighscoreComponent,
     ProgressComponent,
-    ShowArtefactComponent
+    ShowArtefactComponent,
+    AvatarComponent,
+    RulesComponent
   ],
   entryComponents: [
     EditWorldComponent,
@@ -271,7 +277,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SweetAlert2Module.forRoot(),
     SvgIconsModule,
     SwiperModule,
-    ChartsModule
+    ChartsModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule
   ],
   providers: [TdMediaService,
     WorldService,

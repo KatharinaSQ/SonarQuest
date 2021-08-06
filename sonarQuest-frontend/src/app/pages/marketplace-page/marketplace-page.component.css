@@ -5,3 +5,44 @@
 .nebeneinander {
   display: flex;
 }
+
+.artefact-image img {
+  height: 200px;
+  width: 200px;
+}
+
+.artefact {
+  min-width: 120%;
+}
+
+.mat-grid-tile .mat-figure .artefact-liste {
+  top: 250rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start !important;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.meine-artefakte {
+  justify-content: flex-start !important;
+}
+
+.marktplatz {
+  position: relative;
+  height: 100%;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.description-artefakt {
+  padding: .25rem;
+  padding-top: 45px;
+  padding-bottom: 20px;
+}

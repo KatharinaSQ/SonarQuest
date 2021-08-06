@@ -13,6 +13,8 @@ import {UserService} from '../../services/user.service';
 import {UiDesign} from 'app/Interfaces/UiDesign';
 import {EventService} from 'app/services/event.service';
 import {MatSidenav} from '@angular/material/sidenav';
+import {MatDialog} from '@angular/material';
+import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
 
 @Component({
   selector: 'app-main-layout',
@@ -28,6 +30,9 @@ export class MainLayoutComponent implements OnInit {
   public user: User = null;
   private ui: UiDesign = null;
   private clickToggleDesignButton = false;
+
+  events: string[] = [];
+  opened = true;
 
   public myAvatarUrl = RoutingUrls.myAvatar;
   /*  public adventuresUrl = RoutingUrls.adventures;*/
@@ -56,6 +61,7 @@ export class MainLayoutComponent implements OnInit {
 
   public unseenEventsAvailable: boolean;
 
+  isExpanded: boolean;
 
   sidenav: MatSidenav;
 
@@ -72,7 +78,8 @@ export class MainLayoutComponent implements OnInit {
     private authService: AuthenticationService,
     private permissionService: PermissionService,
     private userService: UserService,
-    private eventService: EventService) {
+    private eventService: EventService,
+    private dialog: MatDialog) {
   }
 
   protected logout(): void {
@@ -253,15 +260,54 @@ export class MainLayoutComponent implements OnInit {
     this.toggleDesign()
   }
 
+  /*  toggleDesign() {
+      const dark = 'dark';
+      const light = 'light';
+      const yellow = 'yellow';
+
+      if (this.hasClass(this.body, light)) { // If light is choosen, change to dark
+        this.body.className = this.removeSubString(this.body.className, light);
+        this.addClass(this.body, dark);
+        if (this.clickToggleDesignButton) {
+          this.uiDesignService.updateUiDesign(dark);
+          this.clickToggleDesignButton = false;
+        }
+      } else if (this.hasClass(this.body, dark)) { // If dark is choosen, change to light
+        this.body.className = this.removeSubString(this.body.className, dark);
+        this.addClass(this.body, light);
+        if (this.clickToggleDesignButton) {
+          this.uiDesignService.updateUiDesign(light);
+          this.clickToggleDesignButton = false;
+        }
+      } else if (this.hasClass(this.body, dark)) { // If dark is choosen, change to light
+        this.body.className = this.removeSubString(this.body.className, dark);
+        this.addClass(this.body, light);
+        if (this.clickToggleDesignButton) {
+          this.uiDesignService.updateUiDesign(light);
+          this.clickToggleDesignButton = false;
+        }
+      } else { // If no design is choosen
+        this.addClass(this.body, light);
+      }
+      this.addClass(this.body, "background-image");
+    }*/
   toggleDesign() {
     const dark = 'dark';
     const light = 'light';
+    const yellow = 'yellow';
 
     if (this.hasClass(this.body, light)) { // If light is choosen, change to dark
       this.body.className = this.removeSubString(this.body.className, light);
       this.addClass(this.body, dark);
       if (this.clickToggleDesignButton) {
         this.uiDesignService.updateUiDesign(dark);
+        this.clickToggleDesignButton = false;
+      }
+    } else if (this.hasClass(this.body, dark)) { // If dark is choosen, change to light
+      this.body.className = this.removeSubString(this.body.className, dark);
+      this.addClass(this.body, light);
+      if (this.clickToggleDesignButton) {
+        this.uiDesignService.updateUiDesign(light);
         this.clickToggleDesignButton = false;
       }
     } else if (this.hasClass(this.body, dark)) { // If dark is choosen, change to light
@@ -298,5 +344,15 @@ export class MainLayoutComponent implements OnInit {
   updateLastTavernVisit(): void {
     this.unseenEventsAvailable = false;
     this.userService.updateLastTavernVisit();
+  }
+
+  changeOpened() {
+    this.opened = !this.opened;
+  }
+
+  openDialog() {
+    this.dialog.open(DashboardComponent);
+
+
   }
 }

@@ -13,10 +13,10 @@ import {ReplaySubject, Subject} from 'rxjs';
 })
 export class EventPageComponent implements OnInit {
 
-  private eventDtosSubject: Subject<EventDto[]> = new ReplaySubject(1); 
-  public  eventDtos$ = this.eventDtosSubject.asObservable();
-  private userDtosSubject:  Subject<UserDto[]>  = new ReplaySubject(1); 
-  public  userDtos$  = this.userDtosSubject.asObservable(); 
+  private eventDtosSubject: Subject<EventDto[]> = new ReplaySubject(1);
+  public eventDtos$ = this.eventDtosSubject.asObservable();
+  private userDtosSubject: Subject<UserDto[]> = new ReplaySubject(1);
+  public userDtos$ = this.userDtosSubject.asObservable();
 
   events: Event[];
   eventDtos: EventDto[];
@@ -31,20 +31,21 @@ export class EventPageComponent implements OnInit {
     private eventService: EventService,
     private websocketService: WebsocketService
   ) {
-      this.eventService.eventDtos$.subscribe(eventDtos => { 
-        this.eventDtos = eventDtos;
-      });
-      this.eventService.userDtos$.subscribe(userDtos => { 
-        this.userDtos = userDtos;
-      });
+    this.eventService.eventDtos$.subscribe(eventDtos => {
+      this.eventDtos = eventDtos;
+    });
+    this.eventService.userDtos$.subscribe(userDtos => {
+      this.userDtos = userDtos;
+    });
   }
 
   ngOnInit() {
+
   };
 
   ngAfterViewInit() {
     this.scrollToBottom();
-    
+
     this.commentDivs.changes.subscribe(() => {
       this.scrollToBottom();
     });
@@ -68,16 +69,16 @@ export class EventPageComponent implements OnInit {
       // When this is the first Event in the List show Date
       this.previousEvent = event;
       return true;
-    } else if ((new Date(this.previousEvent.timestamp).getDate() < new Date(event.timestamp).getDate()) || 
-              (new Date(this.previousEvent.timestamp).getMonth() < new Date(event.timestamp).getMonth()) ||
-              (new Date(this.previousEvent.timestamp).getFullYear() < new Date(event.timestamp).getFullYear())) {
+    } else if ((new Date(this.previousEvent.timestamp).getDate() < new Date(event.timestamp).getDate()) ||
+      (new Date(this.previousEvent.timestamp).getMonth() < new Date(event.timestamp).getMonth()) ||
+      (new Date(this.previousEvent.timestamp).getFullYear() < new Date(event.timestamp).getFullYear())) {
       this.previousEvent = event;
       return true;
     } else {
       this.previousEvent = event;
       return false;
     }
-  } 
+  }
 
   sendChat() {
     if (this.message != ""){

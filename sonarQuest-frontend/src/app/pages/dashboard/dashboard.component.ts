@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../Interfaces/User';
-import {UserService} from '../../services/user.service';
-import {ImageService} from '../../services/image.service';
+import {WorldService} from '../../services/world.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,25 +8,8 @@ import {ImageService} from '../../services/image.service';
 })
 export class DashboardComponent implements OnInit {
 
-  public user: User;
-  public img: any = '';
-
-  constructor(private userService: UserService, private imageService: ImageService) {
-    this.userService.user$.subscribe(user => {
-      this.user = user;
-      this.getAvatar();
-    });
-
+  constructor(private worldService: WorldService) {
   }
-
-  private getAvatar() {
-    if (this.user) {
-      this.userService.getImage().subscribe((blob) => {
-        this.imageService.createImageFromBlob(blob).subscribe(image => this.img = image);
-      });
-    }
-  }
-
 
   ngOnInit() {
   }

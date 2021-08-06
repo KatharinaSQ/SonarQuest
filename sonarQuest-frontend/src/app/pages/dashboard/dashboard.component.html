@@ -1,7 +1,4 @@
-<h1> Dashboard - {{user.username}} </h1>
-
 <div>
-
   <div>
     <div class="row">
 
@@ -12,7 +9,7 @@
           <!-- FORTSCHRITT-->
           <div class="col-8 col-sm-6">
             <mat-card>
-              <mat-card-content>
+              <mat-card-content class="progress-content">
                 <div>
                   <app-progress></app-progress>
                 </div>
@@ -22,31 +19,8 @@
           </div>
 
           <!--AVATAR-->
-          <div class="col-4 col-sm-6">
-            <mat-card>
-              <mat-card-content>
-                <div class="row">
-                  <div class="col-2 col-sm-6">
-
-
-                    Avatar <br>
-                    <div class="avatar-image">
-                      <img [src]="img" alt="The image of your avatar.">
-                    </div>
-
-                  </div>
-
-
-                  <div class="col-2 col-sm-6">
-                    <h5>Klasse: {{user.avatarClass.name}} </h5>
-                    <br>
-                    <h5>Rasse: {{ user.avatarRace.name}}</h5>
-                    <h5>XP: {{user.xp}}</h5>
-                    <h5>Gold: {{user.gold}}</h5>
-                  </div>
-                </div>
-              </mat-card-content>
-            </mat-card>
+          <div class="col-8 col-sm-6">
+            <app-avatar></app-avatar>
           </div>
         </div>
 
@@ -57,14 +31,15 @@
               <mat-tab-group>
                 <mat-tab label="Quest">
 
-                  <div>
+                  <div class="mat-card-dashboard">
+
                     <app-available-quests></app-available-quests>
                   </div>
 
                 </mat-tab>
                 <mat-tab label="Raid">
-                  <div>
-                    <h2 align="center">Verfügbare Raids</h2>
+                  <div class="mat-card-dashboard">
+
                     <app-raids-page></app-raids-page>
                   </div>
                 </mat-tab>
@@ -80,7 +55,7 @@
         <mat-card class="highscore">
 
           <div>
-            <!-- <app-highscore></app-highscore>-->
+            <app-highscore></app-highscore>
           </div>
 
         </mat-card>

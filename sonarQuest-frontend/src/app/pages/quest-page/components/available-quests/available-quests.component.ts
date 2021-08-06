@@ -1,17 +1,17 @@
-import { Subscription } from 'rxjs';
+import {Subscription} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
 import {ParticipationService} from '../../../../services/participation.service';
 import {WorldService} from '../../../../services/world.service';
 import {MatDialog} from '@angular/material';
 import {QuestService} from '../../../../services/quest.service';
 import {
+  IPageChangeEvent,
   ITdDataTableColumn,
-  TdDataTableSortingOrder,
-  TdDataTableService,
   ITdDataTableSortChangeEvent,
-  IPageChangeEvent
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Quest} from '../../../../Interfaces/Quest';
 import {ViewAvailableQuestComponent} from './components/view-available-quest/view-available-quest.component';
 import {World} from '../../../../Interfaces/World';
@@ -138,5 +138,10 @@ export class AvailableQuestsComponent implements OnInit, OnDestroy {
     newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
-  }  
+  }
+
+  toggleUsequestcards(world: World) {
+    world.usequestcards = !world.usequestcards;
+    this.worldService.updateWorld(world);
+  }
 }

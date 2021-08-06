@@ -103,12 +103,18 @@
     </div>
     <div flex="5"></div>
     <div class="lightning-login-align">
+
       <button mat-icon-button (click)="clickToggleDesign()"
               [matTooltip]="'APP_COMPONENT.BACKGROUND' | translate"
               [matTooltipClass]="'tooltipMultiline'"
               matTooltipPosition="below">
         <i mat-list-icon class="ra ra-lightning-bolt ra-2x navlist"></i>
       </button>
+      <button mat-button class="lightning-login-align-dialog" (click)="openDialog()">
+        <mat-icon>info</mat-icon>
+      </button>
+
+
       <button *ngIf="user" mat-icon-button (click)="logout()"
               [matTooltip]="'APP_COMPONENT.LOGOUT' | translate"
               [matTooltipClass]="'tooltipMultiline'"

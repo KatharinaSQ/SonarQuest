@@ -1,5 +1,5 @@
 <div class="background">
-  <mat-card>
+<!--  <mat-card>
     <mat-card-content>
       <div layout-padding>
         <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
@@ -61,22 +61,89 @@
         </td-paging-bar>
       </div>
     </mat-card-content>
-  </mat-card>
+  </mat-card>-->
+
+
+  <!--  <div class="row">
+      <div class="col-md-3">
+        <mat-card>
+          <mat-card-content>
+            <h4>Meine Artefakte</h4>
+            <mat-grid-list cols="4" rowHeight="3:1">
+              <mat-grid-tile *ngFor="let artefact of user?.artefacts">
+                <i [matTooltip]="'Name:' + artefact.name + '\nSkills: ' + createSkillsList(artefact)" [matTooltipClass]="'tooltipMultiline'"
+                   matTooltipPosition="after" class="ra ra-3x" [ngClass]="artefact.icon"></i>
+                <span>{{artefact.name}}</span>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </mat-card-content>
+        </mat-card>
+      </div>-->
+
   <div class="row">
     <div class="col-md-3">
-      <mat-card>
-        <mat-card-content>Meine Artefakte</mat-card-content>
+      <mat-card class="marktplatz">
+        <mat-card-content>
+          <h4 class="title">Meine Artefakte</h4>
+          <mat-grid-list cols="1" rowHeight="3:1">
+            <mat-grid-tile *ngFor="let artefact of artefacts">
+              <i [matTooltip]="'Name:' + artefact.name + '\nSkills: ' + createSkillsList(artefact)"
+                 [matTooltipClass]="'tooltipMultiline'"
+                 matTooltipPosition="after" class="ra ra-3x" [ngClass]="artefact.icon"></i>
+              <span>{{artefact.name}}</span>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-card-content>
       </mat-card>
     </div>
 
-    <div class="col-md-6">
-      <mat-card>
-        <mat-card-content>Marktplatz</mat-card-content>
 
+    <div class="col-md-6">
+      <mat-card class="marktplatz ">
+
+        <swiper [config]="swiperConfig" [index]="slideIndex">
+          <div class="cards-container" *ngFor="let artefact of artefacts">
+            <mat-card-content class=" d-flex flex-column align-items-center">
+
+                <span>
+                  <h4 class="title"> {{artefact.name}} </h4>
+                </span>
+
+              <mat-card class="artefact-image">
+                <mat-card-content>
+                  <img src="assets/images/background/bg1.jpg">
+                </mat-card-content>
+              </mat-card>
+
+
+              <span class="description-artefakt">{{artefact.description}}</span>
+
+
+              <div class="title">
+                Kosten:
+                <em mat-list-icon class="ra ra-gold-bar ra-lg"></em>
+                <span class="p-1">{{artefact.price}}
+                </span>
+                Verfügbar
+                <em mat-list-icon class="ra ra-gold-bar ra-lg"></em>
+                <span class="p-1">
+                  {{artefact.quantity}}
+                </span>
+                Stufe
+                <em mat-list-icon class="ra ra-perspective-dice-random ra-lg"></em>
+                <span class="p-1">{{artefact.minLevel.levelNumber}}
+                </span>
+                <br>
+              </div>
+              <button mat-raised-button style="margin-top: 10px">Kaufen</button>
+            </mat-card-content>
+
+          </div>
+        </swiper>
       </mat-card>
     </div>
     <div class="col-md-3">
-      <mat-card>
+      <mat-card class="marktplatz">
         <mat-card-content>
           <app-highscore></app-highscore>
         </mat-card-content>

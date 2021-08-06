@@ -23,9 +23,13 @@ mat-sidenav-container{
 }
 
 button.mat-icon-button.ng-star-inserted {
-  width:50%;
+  width: 50%;
 }
 
 .lightning-login-align {
-  width:20%
+  width: 20%
+}
+
+.lightning-login-align-dialog {
+
 }

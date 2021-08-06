@@ -48,10 +48,11 @@ export class MarketplacePageComponent implements OnInit {
   sortBy = 'name';
   selectedRows: any[] = [];
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
+  slideIndex = 0;
   swiperConfig: SwiperConfigInterface = {
     a11y: true,
     direction: 'horizontal',
-    slidesPerView: 3,
+    slidesPerView: 1,
     spaceBetween: 30,
     centeredSlides: true,
     height: 20,
@@ -121,6 +122,11 @@ export class MarketplacePageComponent implements OnInit {
         this.artefactService.getData();
       })
     }
+  }
+
+  protected createSkillsList(artefact: any) {
+    const skillnames = artefact.skills.map(skill => skill.name);
+    return skillnames.join(', ');
   }
 
   sort(sortEvent: ITdDataTableSortChangeEvent): void {

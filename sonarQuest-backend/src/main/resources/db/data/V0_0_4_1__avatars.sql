@@ -152,4 +152,6 @@ INSERT INTO SQUser (username, password, role_id, gold, xp, level_id, picture, ab
  'ava_fighter1.jpg', 
  'The brave lady of low origin who tries to make a fortune.', 
  2 /* Warrior */, 
- 1 /* Human */); 
+ 1 /* Human */);
+
+

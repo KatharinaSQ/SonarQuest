@@ -7,7 +7,7 @@ p.condition-title {
     font-weight: bold;
     font-variant: small-caps;
     letter-spacing: 2px;
-}  
+}
 .condition-info p {
     padding: 0;
     margin: 0;
@@ -47,13 +47,13 @@ p.condition-title {
     overflow: hidden;
     text-align: center;
 }
-  
+
 .monster-container img {
     margin: auto;
     max-width: 79%;
     width: 75%;
 }
-  
+
 .monster-info {
     position: absolute;
     z-index: 99;
@@ -63,7 +63,7 @@ p.condition-title {
     text-align: center;
     bottom: 25px;
 }
-  
+
 .monster-info-heading {
     width: 75%;
     margin: auto;
@@ -77,4 +77,3 @@ p.condition-title {
 .expansion-panel {
     background-color: rgba(255, 255, 255, 0.2) !important;
 }
- 
