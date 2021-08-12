@@ -23,6 +23,9 @@ import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
 })
 export class MainLayoutComponent implements OnInit {
 
+  isExpanded = false;
+  element: HTMLElement;
+
   public currentWorld: World = null;
   public worlds: World[];
   public pageNames: any;
@@ -30,9 +33,6 @@ export class MainLayoutComponent implements OnInit {
   public user: User = null;
   private ui: UiDesign = null;
   private clickToggleDesignButton = false;
-
-  events: string[] = [];
-  opened = true;
 
   public myAvatarUrl = RoutingUrls.myAvatar;
   /*  public adventuresUrl = RoutingUrls.adventures;*/
@@ -61,12 +61,22 @@ export class MainLayoutComponent implements OnInit {
 
   public unseenEventsAvailable: boolean;
 
-  isExpanded: boolean;
 
   sidenav: MatSidenav;
 
   close() {
     this.sidenav.close();
+  }
+
+  toggleActive(event: any) {
+    debugger;
+    event.preventDefault();
+    if (this.element !== undefined) {
+      this.element.style.backgroundColor = 'white';
+    }
+    var target = event.currentTarget;
+    target.style.backgroundColor = '#e51282';
+    this.element = target;
   }
 
   constructor(
@@ -346,9 +356,6 @@ export class MainLayoutComponent implements OnInit {
     this.userService.updateLastTavernVisit();
   }
 
-  changeOpened() {
-    this.opened = !this.opened;
-  }
 
   openDialog() {
     this.dialog.open(DashboardComponent);

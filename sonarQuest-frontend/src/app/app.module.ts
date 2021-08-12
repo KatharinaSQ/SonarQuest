@@ -130,6 +130,7 @@ import {AvatarComponent} from './pages/dashboard/avatar/avatar.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {RulesComponent} from './layouts/main-layout/rules/rules.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 // AoT requires an exported function for factories
@@ -279,7 +280,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SwiperModule,
     ChartsModule,
     MatButtonToggleModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatRadioModule
   ],
   providers: [TdMediaService,
     WorldService,

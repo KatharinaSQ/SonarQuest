@@ -1,3 +1,81 @@
+<!--
+
+
+<div class="example-container">
+  <mat-toolbar class="example-toolbar">
+    <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
+    <span class="example-fill-remaining-space"></span>
+    <mat-icon>logout</mat-icon>
+  </mat-toolbar>
+
+  <mat-sidenav-container  class="example-sidenav-container" >
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+      <mat-nav-list class="dashboard">
+        <a mat-list-item (click)="toggleActive($event)">
+          <mat-icon mat-list-icon >account_circle</mat-icon>
+          <p matLine *ngIf="isExpanded">Name</p>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a mat-list-item (click)="toggleActive($event)">
+          <mat-icon mat-list-icon>inbox</mat-icon>
+          <p matLine *ngIf="isExpanded">Inbox</p>
+        </a>
+        <div *ngIf="isMyAvatarVisible">
+          <a mat-list-item routerLink="/{{myAvatarUrl}}">
+            <i mat-list-icon class="ra ra-muscle-up ra-lg navlist"></i>
+            <h3 mat-line>{{"APP_COMPONENT.MY_AVATAR"| translate}} </h3>
+          </a>
+          <mat-divider mat-inset></mat-divider>
+        </div>
+
+        <div *ngIf="isRaidsVisible">
+          <a mat-list-item routerLink="/{{raidsUrl}}">
+            <i mat-list-icon class="ra ra-monster-skull ra-lg navlist"></i>
+            <h3 mat-line>{{"APP_COMPONENT.RAIDS"| translate}} </h3>
+          </a>
+          <mat-divider mat-inset></mat-divider>
+        </div>
+
+        <a mat-list-item (click)="toggleActive($event)">
+          <mat-icon mat-list-icon>star</mat-icon>
+          <p matLine *ngIf="isExpanded">Starred</p>
+        </a>
+        <a mat-list-item (click)="toggleActive($event)">
+          <mat-icon mat-list-icon>drafts</mat-icon>
+          <p matLine *ngIf="isExpanded">Drafts</p>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a mat-list-item (click)="toggleActive($event)">
+          <mat-icon mat-list-icon>mail</mat-icon>
+          <p matLine *ngIf="isExpanded">All Mail</p>
+        </a>
+        <a mat-list-item (click)="toggleActive($event)">
+          <mat-icon mat-list-icon>delete</mat-icon>
+          <p matLine *ngIf="isExpanded">Trash</p>
+        </a>
+        <a mat-list-item (click)="toggleActive($event)">
+          <mat-icon mat-list-icon>warning</mat-icon>
+          <p matLine *ngIf="isExpanded">Spam</p>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <div class="example-sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-container>
+</div>-->
+
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
+
+
 <td-layout-nav-list #navList toolbarTitle="SonarQuest" navigationRoute="/"
                     [opened]="media.registerQuery('gt-sm') | async"
                     [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'over'"
@@ -5,6 +83,7 @@
 
   <div td-sidenav-toolbar-content>
     <i class="ra ra-sword"></i>
+
   </div>
   <mat-nav-list td-sidenav-content (click)="!media.query('gt-sm') && navList.close()">
     <mat-list-item disableRipple *ngIf="isWorldSelectVisible">
@@ -16,6 +95,7 @@
         </mat-option>
       </mat-select>
       <div></div>
+
       <mat-divider mat-inset></mat-divider>
     </mat-list-item>
     <div *ngIf="isMyAvatarVisible">
@@ -91,6 +171,7 @@
   </mat-nav-list>
   <div td-toolbar-content layout="row" flex>
     <div class="vertical-align">{{determinePageTitle(router.url)}}</div>
+    <button (click)="navList.toggle()">toggle</button>
     <div flex></div>
     <div class="username-toolbar vertical-align">
       <button *ngIf="user" mat-icon-button routerLink="/{{myAvatarUrl}}"
