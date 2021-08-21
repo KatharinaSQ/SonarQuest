@@ -16,6 +16,19 @@
   right: 0;
 }
 
+.quest_picture {
+  position: absolute;
+  left: 35%;
+  width: 80px;
+  height: 80px;
+
+}
+
+.title {
+  position: inherit;
+  left: 20%;
+}
+
 .mat-card-dashboard {
   box-shadow: 3px 3px black, -1em 0 0.4em black !important;
   background-color: #6c757d !important;

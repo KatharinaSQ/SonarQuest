@@ -76,6 +76,7 @@
     can be found in the LICENSE file at http://angular.io/license -->
 
 
+<!--
 <td-layout-nav-list #navList toolbarTitle="SonarQuest" navigationRoute="/"
                     [opened]="media.registerQuery('gt-sm') | async"
                     [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'over'"
@@ -210,3 +211,174 @@
 
 
 
+
+-->
+
+<!-- <mat-toolbar class="example-sidenav" >
+<div td-toolbar-content  layout="row" flex>
+ <div class="vertical-align">{{determinePageTitle(router.url)}}</div>
+ <div flex></div>
+ <div class="username-toolbar vertical-align">
+   <button *ngIf="user" mat-icon-button routerLink="/{{myAvatarUrl}}"
+           [matTooltip]="'APP_COMPONENT.USER_PROFILE' | translate"
+           [matTooltipClass]="'tooltipMultiline'"
+           matTooltipPosition="below">
+     <mat-icon>person</mat-icon>
+     <span>{{user?.username}}</span>
+   </button>
+ </div>
+ <div flex="5"></div>
+ <div class="lightning-login-align">
+
+   <button mat-icon-button (click)="clickToggleDesign()"
+           [matTooltip]="'APP_COMPONENT.BACKGROUND' | translate"
+           [matTooltipClass]="'tooltipMultiline'"
+           matTooltipPosition="below">
+     <i mat-list-icon class="ra ra-lightning-bolt ra-2x navlist"></i>
+   </button>
+   <button mat-button class="lightning-login-align-dialog" (click)="openDialog()">
+     <mat-icon>info</mat-icon>
+   </button>
+
+
+   <button *ngIf="user" mat-icon-button (click)="logout()"
+           [matTooltip]="'APP_COMPONENT.LOGOUT' | translate"
+           [matTooltipClass]="'tooltipMultiline'"
+           matTooltipPosition="below">
+     <mat-icon>power_settings_new</mat-icon>
+   </button>
+ </div>
+</div>
+
+   <span>My Application</span>
+ </mat-toolbar>
+
+-->
+
+<mat-sidenav-container fullscreen>
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    class="example-sidenav"
+    [ngStyle]="{ 'width.em': sidenavWidth }"
+    opened="true"
+    (mouseenter)="increase()"
+    (mouseleave)="decrease()"
+  >
+    <mat-nav-list td-sidenav-content>
+      <mat-list-item disableRipple *ngIf="isWorldSelectVisible">
+        <i mat-list-icon class="ra ra-mountains ra-lg navlist"></i>
+        <div flex></div>
+        <mat-select mat-line [placeholder]="currentWorld?.name" [(ngModel)]="currentWorld" floatPlaceholder="never">
+          <mat-option flex="20" *ngFor="let world of worlds" [value]="world" (click)="updateWorld(world)">
+            {{ world.name }}
+          </mat-option>
+        </mat-select>
+        <div></div>
+
+        <mat-divider mat-inset></mat-divider>
+      </mat-list-item>
+      <div *ngIf="isMyAvatarVisible">
+        <a mat-list-item routerLink="/{{myAvatarUrl}}">
+          <i mat-list-icon class="ra ra-muscle-up ra-lg navlist"></i>
+          <h3 mat-line>{{"APP_COMPONENT.MY_AVATAR"| translate}} </h3>
+        </a>
+        <mat-divider mat-inset></mat-divider>
+      </div>
+      <div *ngIf="isDashboardVisible">
+        <a mat-list-item routerLink="/{{dashboardUrl}}">
+          <i mat-list-icon class="ra ra-blade-bite ra-lg navlist"></i>
+          <h3 mat-line>Dashboard </h3>
+        </a>
+        <mat-divider mat-inset></mat-divider>
+      </div>
+
+      <div *ngIf="isRaidsVisible">
+        <a mat-list-item routerLink="/{{raidsUrl}}">
+          <i mat-list-icon class="ra ra-monster-skull ra-lg navlist"></i>
+          <h3 mat-line>{{"APP_COMPONENT.RAIDS"| translate}} </h3>
+        </a>
+        <mat-divider mat-inset></mat-divider>
+      </div>
+      <div *ngIf="isQualityGateRaidVisible">
+        <a mat-list-item routerLink="/{{qualityGateRaidUrl}}">
+          <i mat-list-icon class="ra ra-metal-gate ra-lg navlist"></i>
+          <h3 mat-line> Quality Gate </h3>
+        </a>
+        <mat-divider mat-inset></mat-divider>
+      </div>
+
+      <div *ngIf="isQuestsVisible">
+        <a mat-list-item routerLink="/{{questsUrl}}">
+          <i mat-list-icon class="ra ra-scroll-unfurled ra-lg navlist"></i>
+          <h3 mat-line>{{"APP_COMPONENT.QUESTS"| translate}}</h3>
+        </a>
+        <mat-divider mat-inset></mat-divider>
+      </div>
+      <div *ngIf="isMarketplaceVisible">
+        <a mat-list-item routerLink="/{{marketplaceUrl}}">
+          <i mat-list-icon class="ra ra-capitol ra-lg navlist"></i>
+          <h3 mat-line>{{"APP_COMPONENT.MARKETPLACE"| translate}}</h3>
+        </a>
+        <mat-divider mat-inset></mat-divider>
+      </div>
+      <div *ngIf="isGamemasterVisible">
+        <a mat-list-item routerLink="/{{gamemasterUrl}}">
+          <i mat-list-icon class="ra ra-forging ra-lg navlist"></i>
+          <h3 mat-line>{{"APP_COMPONENT.GAMEMASTER"| translate}}</h3>
+        </a>
+
+        <mat-divider mat-inset></mat-divider>
+      </div>
+      <div *ngIf="isAdminVisible">
+        <a mat-list-item routerLink="/{{adminUrl}}">
+          <i mat-list-icon class="ra ra-queen-crown ra-lg navlist"></i>
+          <h3 mat-line>{{"APP_COMPONENT.ADMIN"| translate}}</h3>
+        </a>
+        <mat-divider mat-inset></mat-divider>
+      </div>
+
+      <div *ngIf="isEventVisible">
+        <a mat-list-item routerLink="/{{eventUrl}}" (click)="updateLastTavernVisit()">
+          <i mat-list-icon class="ra ra-beer ra-lg navlist"></i>
+          <mat-divider mat-inset></mat-divider>
+          <h3 mat-line>{{"APP_COMPONENT.EVENTS"| translate}} <i mat-list-icon
+                                                                class="ra ra-ringing-bell notification-icon pulse"
+                                                                *ngIf="unseenEventsAvailable"></i></h3>
+
+        </a>
+        <mat-divider></mat-divider>
+      </div>
+
+      <div>
+        <div>
+          <a mat-list-item (click)="clickToggleDesign()">
+            <i mat-list-icon class="ra ra-lightning-bolt ra-2x navlist"></i>
+            <!--            <h3 mat-line>{{"APP_COMPONENT.BACKGROUND"| translate}}</h3>-->
+            <h3 mat-line>Theme</h3>
+          </a>
+          <mat-divider mat-inset></mat-divider>
+        </div>
+        <div *ngIf="user">
+          <a mat-list-item (click)="logout()">
+            <mat-icon mat-list-icon>power_settings_new</mat-icon>
+            <h3 mat-line>{{"APP_COMPONENT.LOGOUT"| translate}}</h3>
+          </a>
+          <mat-divider mat-inset></mat-divider>
+        </div>
+        <div>
+          <a mat-list-item (click)="openDialog()">
+            <mat-icon mat-list-icon>info</mat-icon>
+            <h3 mat-line>Spielregeln</h3>
+          </a>
+          <mat-divider mat-inset></mat-divider>
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content">
+    <router-outlet>
+    </router-outlet>
+  </div>
+</mat-sidenav-container>

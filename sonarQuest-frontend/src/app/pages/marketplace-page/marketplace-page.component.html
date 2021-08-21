@@ -86,7 +86,7 @@
         <mat-card-content>
           <h4 class="title">Meine Artefakte</h4>
           <mat-grid-list cols="1" rowHeight="3:1">
-            <mat-grid-tile *ngFor="let artefact of artefacts">
+            <mat-grid-tile class="artefact-liste" *ngFor="let artefact of artefacts">
               <i [matTooltip]="'Name:' + artefact.name + '\nSkills: ' + createSkillsList(artefact)"
                  [matTooltipClass]="'tooltipMultiline'"
                  matTooltipPosition="after" class="ra ra-3x" [ngClass]="artefact.icon"></i>

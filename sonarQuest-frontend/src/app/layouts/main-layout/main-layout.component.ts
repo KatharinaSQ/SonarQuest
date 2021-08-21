@@ -23,7 +23,7 @@ import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
 })
 export class MainLayoutComponent implements OnInit {
 
-  isExpanded = false;
+
   element: HTMLElement;
 
   public currentWorld: World = null;
@@ -33,6 +33,7 @@ export class MainLayoutComponent implements OnInit {
   public user: User = null;
   private ui: UiDesign = null;
   private clickToggleDesignButton = false;
+  sidenavWidth = 4;
 
   public myAvatarUrl = RoutingUrls.myAvatar;
   /*  public adventuresUrl = RoutingUrls.adventures;*/
@@ -56,28 +57,14 @@ export class MainLayoutComponent implements OnInit {
   public isRaidsVisible: boolean;
   public isQualityGateRaidVisible: boolean;
   public isDashboardVisible: boolean;
+  public isExpanded = false;
 
   public body = <HTMLScriptElement><any>document.getElementsByTagName('body')[0];
 
   public unseenEventsAvailable: boolean;
-
-
+  isMenuOpen = true;
+  contentMargin = 240;
   sidenav: MatSidenav;
-
-  close() {
-    this.sidenav.close();
-  }
-
-  toggleActive(event: any) {
-    debugger;
-    event.preventDefault();
-    if (this.element !== undefined) {
-      this.element.style.backgroundColor = 'white';
-    }
-    var target = event.currentTarget;
-    target.style.backgroundColor = '#e51282';
-    this.element = target;
-  }
 
   constructor(
     private uiDesignService: UiDesignService,
@@ -270,6 +257,19 @@ export class MainLayoutComponent implements OnInit {
     this.toggleDesign()
   }
 
+
+  onToolbarMenuToggle() {
+    console.log('On toolbar toggled', this.isMenuOpen);
+    this.isMenuOpen = !this.isMenuOpen;
+
+    if (!this.isMenuOpen) {
+      this.contentMargin = 70;
+    } else {
+      this.contentMargin = 240;
+    }
+
+  }
+
   /*  toggleDesign() {
       const dark = 'dark';
       const light = 'light';
@@ -359,7 +359,21 @@ export class MainLayoutComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(DashboardComponent);
-
-
   }
+
+  public toggleMenu() {
+    this.isExpanded = !this.isExpanded;
+  }
+
+  increase() {
+    this.sidenavWidth = 15;
+    console.log('increase sidenav width');
+  }
+
+  decrease() {
+    this.sidenavWidth = 4;
+    console.log('decrease sidenav width');
+  }
+
+
 }

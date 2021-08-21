@@ -52,17 +52,19 @@
            fxFlex.lt-md="100%">
         <mat-card id="questcard" class="mat-card-dashboard">
           <!--    QUESTNAME UND QUEST BILD-->
-          <mat-card-header>
-            <img mat-card-avatar [src]="quest.image" alt="Image of the Quest {{ quest.title }}">
+          <mat-card-header class="title">
+
             <mat-card-title>
               <h3>{{quest.title}}</h3>
             </mat-card-title>
+
             <mat-card-subtitle>{{quest.adventure?.title}}</mat-card-subtitle>
           </mat-card-header>
-
+          <img class="quest_picture" mat-card-avatar [src]="quest.image" alt="Image of the Quest">
           <!--    Belohnung-->
           <mat-card-content class="quest-belohnung-pos">
             <div>
+
               {{"TABLE.COLUMNS.GOLD" | translate}}: {{quest.gold}}
               <br/>
               {{"TABLE.COLUMNS.XP" | translate}}: {{quest.xp}}

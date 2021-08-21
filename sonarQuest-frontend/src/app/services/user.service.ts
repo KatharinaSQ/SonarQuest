@@ -1,9 +1,9 @@
-import { Observable, ReplaySubject, Subject, Subscriber } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { User } from '../Interfaces/User';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { tap } from 'rxjs/operators';
+import {Observable, ReplaySubject, Subject} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {User} from '../Interfaces/User';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {tap} from 'rxjs/operators';
 import * as moment from 'moment';
 
 @Injectable()
@@ -13,7 +13,8 @@ export class UserService {
   user$ = this.userSubject.asObservable();
 
   constructor(private httpClient: HttpClient
-  ) { }
+  ) {
+  }
 
   public loadUser(): void {
     const url = `${environment.endpoint}/user`;
@@ -33,14 +34,24 @@ export class UserService {
     return this.httpClient.get<User[]>(url).pipe(tap((users: User[]) => {
       users.forEach(user => {
         user.lastLogin = user.lastLogin ? moment(new Date(user.lastLogin)).format('DD.MM.YYYY HH:mm:ss') : null
-       // user.lastTavernVisit = user.lastTavernVisit ? moment(new Date(user.lastTavernVisit)).format('DD.MM.YYYY HH:mm:ss') : null
+        // user.lastTavernVisit = user.lastTavernVisit ? moment(new Date(user.lastTavernVisit)).format('DD.MM.YYYY HH:mm:ss') : null
+      })
+    }));
+  }
+
+  public getUsersRanking(): Observable<User[]> {
+    const url = `${environment}4200/user/all`;
+    return this.httpClient.get<User[]>(url).pipe(tap((users: User[]) => {
+      users.forEach(user => {
+        user.lastLogin = user.lastLogin ? moment(new Date(user.lastLogin)).format('DD.MM.YYYY HH:mm:ss') : null
+        // user.lastTavernVisit = user.lastTavernVisit ? moment(new Date(user.lastTavernVisit)).format('DD.MM.YYYY HH:mm:ss') : null
       })
     }));
   }
 
   public getImage(): Observable<Blob> {
     const url = `${environment.endpoint}/user/avatar`;
-    return this.httpClient.get(url, { responseType: 'blob' });
+    return this.httpClient.get(url, {responseType: 'blob'});
   }
 
   public getImageForUser(user: User): Observable<Blob> {

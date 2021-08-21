@@ -1,4 +1,5 @@
 .highscore {
+  margin-top: 15px;
   height: 100%;
 }
 
@@ -8,23 +9,11 @@
   -webkit-border-radius: 10px
 }
 
-.mat-card {
-  /*  background: #535D6B !important;*/
-  min-height: 90% !important;
-  min-width: 100% !important;
-  max-height: 100% !important;
-  max-width: 100% !important;
-
-
+.progress-card {
+  height: 210px;
+  margin-top: 20px;
 }
 
-.progress-content {
-  min-height: 90% !important;
-  min-width: 100% !important;
-  max-height: 90% !important;
-  max-width: 100% !important;
+.mat-card-dashboard {
+  margin-left: 20px;
 }
-
-/*.mat-card-dashboard {
-  box-shadow: 3px 3px black, -1em 0 0.4em black !important;
-}*/
