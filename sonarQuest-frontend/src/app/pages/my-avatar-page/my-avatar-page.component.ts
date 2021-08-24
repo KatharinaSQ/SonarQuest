@@ -13,10 +13,10 @@ import {User} from '../../Interfaces/User';
 export class MyAvatarPageComponent implements OnInit {
 
   public XPpercent = 0;
-  public level = 0;
-  public maxXp = 0;
+  public level: number = 0;
+  public maxXp: number = 0;
   public minXpForLevel2 = 10;
-  public imageToShow: any = '';
+  public imageToShow: any = "";
   public user: User;
 
   constructor(private userService: UserService,
@@ -25,11 +25,11 @@ export class MyAvatarPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.user$.subscribe(user => {
+    this.userService.user$.subscribe(user =>{
       this.user = user;
-      this.level = (this.user.level === undefined ? 1 : this.user.level.levelNumber);
+      this.level = (this.user.level == undefined ? 1 : this.user.level.levelNumber);
       this.maxXp = (this.level > 1 ? this.user.level.maxXp : this.minXpForLevel2);
-      this.xpPercent();
+      this.xpPercent();      
       this.getAvatar();
     })
   }

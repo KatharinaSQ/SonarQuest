@@ -3,7 +3,7 @@
 
     <div #commentDiv *ngFor="let e of eventDtos">
         <div *ngIf="checkNewDay(e)">
-            
+
           <div layout="row" class="day">
             <div flex></div>
               <div flex-end>
@@ -29,7 +29,7 @@
 
             <div  layout="column"  class="content">
               <div layout="row" class="state">
-                <span *ngIf="e.state==null" class="author">{{ getUserName(e) }}</span> 
+                <span *ngIf="e.state==null" class="author">{{ getUserName(e) }}</span>
                 <span *ngIf=e.state class="state">{{ getUserName(e) }} {{ 'EVENT_PAGE.'+e.type+'.'+e.state | translate }}</span>
               </div>
               <div flex>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </div>
-      </div>    
+      </div>
   </mat-card-content>
   <mat-card-content class="chat">
     <div>

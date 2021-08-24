@@ -23,6 +23,7 @@ export class UserService {
     });
   }
 
+
   public updateLastTavernVisit(): Promise<any> {
     const url = `${environment.endpoint}/user/updateLastTavernVisit`;
     const date = new Date();
@@ -37,10 +38,8 @@ export class UserService {
         // user.lastTavernVisit = user.lastTavernVisit ? moment(new Date(user.lastTavernVisit)).format('DD.MM.YYYY HH:mm:ss') : null
       })
     }));
-  }
-
-  public getUsersRanking(): Observable<User[]> {
-    const url = `${environment}4200/user/all`;
+  }  public getUsersAll(): Observable<User[]> {
+    const url = `${environment.endpoint}/user/all`;
     return this.httpClient.get<User[]>(url).pipe(tap((users: User[]) => {
       users.forEach(user => {
         user.lastLogin = user.lastLogin ? moment(new Date(user.lastLogin)).format('DD.MM.YYYY HH:mm:ss') : null
@@ -48,7 +47,6 @@ export class UserService {
       })
     }));
   }
-
   public getImage(): Observable<Blob> {
     const url = `${environment.endpoint}/user/avatar`;
     return this.httpClient.get(url, {responseType: 'blob'});

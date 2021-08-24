@@ -35,7 +35,7 @@ export class RaidModel implements Raid {
         this.xp = xp;
         this.quests = quests;
         this.world = world;
-        if (quests == null){
+        if (quests == null) {
             this.quests = new Array<Quest>();
         }
     }

@@ -17,6 +17,7 @@ import {LoginPageComponent} from '../pages/login-page/login-page.component';
 import {MainLayoutComponent} from '../layouts/main-layout/main-layout.component';
 import {RaidPageComponent} from 'app/pages/raid-page/raid-page.component';
 import {DashboardComponent} from '../pages/dashboard/dashboard.component';
+import {RulesComponent} from '../layouts/main-layout/rules/rules.component';
 
 
 const appRoutes: Routes = [
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
       {path: RoutingUrls.raid, component: RaidPageComponent},
       {path: RoutingUrls.qualitygate, component: QualitygatePageComponent},
       {path: RoutingUrls.dashboard, component: DashboardComponent},
+      {path: RoutingUrls.rules, component: RulesComponent},
     ]
   },
   {path: RoutingUrls.login, component: LoginPageComponent},

@@ -11,7 +11,7 @@ import {Task} from '../Interfaces/Task';
 import {ParticipationService} from './participation.service';
 import {TaskService} from './task.service';
 import { UserService } from './user.service';
-import { QuestState } from 'app/Interfaces/QuestState';
+import {SolvedTaskHistoryDto} from '../Interfaces/SolvedTaskHistoryDto';
 
 @Injectable()
 export class QuestService {
@@ -181,6 +181,11 @@ export class QuestService {
   deleteFromRaid(quest: any): Promise<any> {
     return this.http.delete(`${environment.endpoint}/quest/${quest.id}/removeRaid`)
       .toPromise()
+  }
+
+  getSolvedTaskHistoryListForAllQuests(world: World): Observable< SolvedTaskHistoryDto[] > {
+    const url = `${environment.endpoint}/dashboard/${world}`;
+    return this.http.get<SolvedTaskHistoryDto[]>(url);
   }
 
 }

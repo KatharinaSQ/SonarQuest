@@ -7,17 +7,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import com.viadee.sonarquest.dto.SolvedTaskHistoryDTO;
+import com.viadee.sonarquest.entities.*;
+import com.viadee.sonarquest.exception.BackendServiceRuntimeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.viadee.sonarquest.constants.QuestState;
 import com.viadee.sonarquest.dto.ProgressDTO;
-import com.viadee.sonarquest.entities.Participation;
-import com.viadee.sonarquest.entities.Quest;
-import com.viadee.sonarquest.entities.Task;
-import com.viadee.sonarquest.entities.User;
-import com.viadee.sonarquest.entities.World;
 import com.viadee.sonarquest.interfaces.QuestSuggestion;
 import com.viadee.sonarquest.repositories.ParticipationRepository;
 import com.viadee.sonarquest.repositories.QuestRepository;
@@ -32,6 +30,9 @@ public class QuestService implements QuestSuggestion {
 
     @Autowired
     private TaskRepository taskRepository;
+
+    @Autowired
+    private SolvedTaskHistoryService solvedTaskProgressService;
 
     @Autowired
     private GratificationService gratificationService;
@@ -158,5 +159,15 @@ public class QuestService implements QuestSuggestion {
 		progressDTO.setCalculatedProgress(Math.round(100-(100*(double)openTaks/taskSize)));
 		return progressDTO;
 	}
+    public List<SolvedTaskHistoryDTO> getSolvedTaskHistoryforAllQuests(World world){
+        final List<Quest> allQuestsForWorld = questRepository.findByWorld(world);
+        if(allQuestsForWorld==null)
+            new BackendServiceRuntimeException("Could not calculate solved tasks - quest is null!", new NullPointerException());
+        List<Task> tasks = new ArrayList<Task>();
+        allQuestsForWorld.forEach(quest -> {
+            tasks.addAll(quest.getTasks());
+        });
+        return solvedTaskProgressService.getSolvedTaskHistory(tasks);
+    }
   
 }

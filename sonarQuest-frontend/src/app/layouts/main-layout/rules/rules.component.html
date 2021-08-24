@@ -1,32 +1,38 @@
-<h2 mat-dialog-title>Install Angular</h2>
+<h2 mat-dialog-title>Spielregeln</h2>
 <mat-dialog-content class="mat-typography">
-  <h3>Develop across all platforms</h3>
-  <p>Learn one way to build applications with Angular and reuse your code and abilities to build
-    apps for any deployment target. For web, mobile web, native mobile and native desktop.</p>
+  <h3>Was ist SonarQuest?</h3>
+  <p>Das Warten des Codes ist in der Regel eine unbeliebte Aufgabe bei den Entwicklern.
+    Daher bleiben in SonarQube vermehrt Issues offen und werden nicht bearbeitet. Dies kann auf lange Sicht zu komplexen Problemen
+    in der Software führen. Daher ist es wichtig auf eine gute Softwarequalität zu setzen. </p>
+  <p>SonarQuest ist eine Anwendung die es den Entwicklern erleichtern soll, die besagte Softwarequalität zu verbessern.
+    Es sind dieselben Issues zu sehen wie in SonarQube auch, da SonarQuest die Daten von SonarQube bezieht.
+    Der Unterschied ist: SonarQuest setzt auf Gamification.</p>
+  <p>Angelehnt an ein Rollenspiel werden die Entwickler im Team auf eine Abenteuerreise geschickt.
+    Die Issues werden in Quests verpackt, sie bekämpfen Monster und schließen somit Sicherheitslücken, lösen Rätsel indem sie Tests schreiben etc.
+    Zur Belohnung gibt es Erfahrungspunkte und Gold, womit auf dem integrierten Markt Artefakte für den eigenen Avatar gekauft werden können.
+    Der spielerische Ansatz soll das Team motivieren, die Qualität im Projekt zu steigern </p>
 
-  <h3>Speed &amp; Performance</h3>
-  <p>Achieve the maximum speed possible on the Web Platform today, and take it further, via Web
-    Workers and server-side rendering. Angular puts you in control over scalability. Meet huge
-    data requirements by building data models on RxJS, Immutable.js or another push-model.</p>
+  <h3>Raids &amp; Quests</h3>
+  <p>Ein Raid besteht aus mehreren Quest. Durch das lösen der Quest wird das Monster besiegt. Dies soll im Team geschafft werden.</p>
 
-  <h3>Incredible tooling</h3>
+  <h3>Raids</h3>
   <p>Build features quickly with simple, declarative templates. Extend the template language with
     your own components and use a wide array of existing components. Get immediate Angular-specific
     help and feedback with nearly every IDE and editor. All this comes together so you can focus
     on building amazing apps rather than trying to make the code work.</p>
 
-  <h3>Loved by millions</h3>
+  <h3>Quality Gate</h3>
   <p>From prototype through global deployment, Angular delivers the productivity and scalable
     infrastructure that supports Google's largest applications.</p>
 
-  <h3>What is Angular?</h3>
+  <h3>Marktplatz</h3>
 
   <p>Angular is a platform that makes it easy to build applications with the web. Angular
     combines declarative templates, dependency injection, end to end tooling, and integrated
     best practices to solve development challenges. Angular empowers developers to build
     applications that live on the web, mobile, or the desktop</p>
 
-  <h3>Architecture overview</h3>
+  <h3>Taverne</h3>
 
   <p>Angular is a platform and framework for building client applications in HTML and TypeScript.
     Angular is itself written in TypeScript. It implements core and optional functionality as a
@@ -37,28 +43,6 @@
     defined by a set of NgModules. An app always has at least a root module that enables
     bootstrapping, and typically has many more feature modules.</p>
 
-  <p>Components define views, which are sets of screen elements that Angular can choose among and
-    modify according to your program logic and data. Every app has at least a root component.</p>
-
-  <p>Components use services, which provide specific functionality not directly related to views.
-    Service providers can be injected into components as dependencies, making your code modular,
-    reusable, and efficient.</p>
-
-  <p>Both components and services are simply classes, with decorators that mark their type and
-    provide metadata that tells Angular how to use them.</p>
-
-  <p>The metadata for a component class associates it with a template that defines a view. A
-    template combines ordinary HTML with Angular directives and binding markup that allow Angular
-    to modify the HTML before rendering it for display.</p>
-
-  <p>The metadata for a service class provides the information Angular needs to make it available
-    to components through Dependency Injection (DI).</p>
-
-  <p>An app's components typically define many views, arranged hierarchically. Angular provides
-    the Router service to help you define navigation paths among views. The router provides
-    sophisticated in-browser navigational capabilities.</p>
-</mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
 </mat-dialog-actions>

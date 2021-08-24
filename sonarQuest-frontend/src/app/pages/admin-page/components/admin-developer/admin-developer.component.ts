@@ -91,10 +91,10 @@ export class AdminDeveloperComponent implements OnInit {
       .subscribe(bool => {
         this.ngOnInit();
 
-        if ( bool && this.user.id == user.id){
+        if ( bool && this.user.id === user.id){
           this.worldService.getWorlds()
-        } 
-        
+        }
+
       });
   }
 

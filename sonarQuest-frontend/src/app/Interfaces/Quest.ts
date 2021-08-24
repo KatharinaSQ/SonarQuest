@@ -25,5 +25,3 @@ export interface Quest {
   participants: string[];
   questProgress: number;
 }
-
-

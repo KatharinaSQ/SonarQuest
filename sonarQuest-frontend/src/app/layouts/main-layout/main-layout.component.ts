@@ -15,6 +15,7 @@ import {EventService} from 'app/services/event.service';
 import {MatSidenav} from '@angular/material/sidenav';
 import {MatDialog} from '@angular/material';
 import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
+import {RulesComponent} from './rules/rules.component';
 
 @Component({
   selector: 'app-main-layout',
@@ -38,6 +39,7 @@ export class MainLayoutComponent implements OnInit {
   public myAvatarUrl = RoutingUrls.myAvatar;
   /*  public adventuresUrl = RoutingUrls.adventures;*/
   public dashboardUrl = RoutingUrls.dashboard;
+  public rulesUrl = RoutingUrls.rules;
   public raidsUrl = RoutingUrls.raids;
   public qualityGateRaidUrl = RoutingUrls.qualitygate;
   public questsUrl = RoutingUrls.quests;
@@ -57,6 +59,7 @@ export class MainLayoutComponent implements OnInit {
   public isRaidsVisible: boolean;
   public isQualityGateRaidVisible: boolean;
   public isDashboardVisible: boolean;
+  public isRulesVisible: boolean;
   public isExpanded = false;
 
   public body = <HTMLScriptElement><any>document.getElementsByTagName('body')[0];
@@ -133,6 +136,7 @@ export class MainLayoutComponent implements OnInit {
     this.isAdminVisible = enable && this.permissionService.isUrlVisible(RoutingUrls.admin);
     this.isEventVisible = enable && this.permissionService.isUrlVisible(RoutingUrls.events);
     this.isDashboardVisible = enable && this.permissionService.isUrlVisible(RoutingUrls.dashboard);
+    this.isRulesVisible = enable && this.permissionService.isUrlVisible(RoutingUrls.rules);
   }
 
 
@@ -171,6 +175,8 @@ export class MainLayoutComponent implements OnInit {
       switch (url) {
         case '/dashboard':
           return this.pageNames.DASHBOARD;
+          case '/rules':
+          return this.pageNames.RULES;
         case '/start':
           return this.pageNames.STARTPAGE;
         case '/myAvatar':
@@ -197,7 +203,7 @@ export class MainLayoutComponent implements OnInit {
     }
   }
 
-  ddeterminePageTitle() {
+ /* ddeterminePageTitle() {
     let url = this.router.url
     if (url === '/start') {
       return this.pageNames.STARTPAGE;
@@ -223,7 +229,7 @@ export class MainLayoutComponent implements OnInit {
       return '';
     }
   }
-
+*/
   updateWorld(world: World) {
     this.worldService.setCurrentWorld(world);
   }
@@ -358,7 +364,7 @@ export class MainLayoutComponent implements OnInit {
 
 
   openDialog() {
-    this.dialog.open(DashboardComponent);
+    this.dialog.open(RulesComponent);
   }
 
   public toggleMenu() {
