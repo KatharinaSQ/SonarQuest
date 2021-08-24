@@ -8,7 +8,6 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import com.viadee.sonarquest.dto.SolvedTaskHistoryDTO;
-import com.viadee.sonarquest.entities.*;
 import com.viadee.sonarquest.exception.BackendServiceRuntimeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.viadee.sonarquest.constants.QuestState;
 import com.viadee.sonarquest.dto.ProgressDTO;
+import com.viadee.sonarquest.entities.Participation;
+import com.viadee.sonarquest.entities.Quest;
+import com.viadee.sonarquest.entities.Task;
+import com.viadee.sonarquest.entities.User;
+import com.viadee.sonarquest.entities.World;
 import com.viadee.sonarquest.interfaces.QuestSuggestion;
 import com.viadee.sonarquest.repositories.ParticipationRepository;
 import com.viadee.sonarquest.repositories.QuestRepository;
@@ -32,10 +36,10 @@ public class QuestService implements QuestSuggestion {
     private TaskRepository taskRepository;
 
     @Autowired
-    private SolvedTaskHistoryService solvedTaskProgressService;
+    private GratificationService gratificationService;
 
     @Autowired
-    private GratificationService gratificationService;
+    private SolvedTaskHistoryService solvedTaskProgressService;
 
     @Autowired
     private ParticipationRepository participationRepository;
