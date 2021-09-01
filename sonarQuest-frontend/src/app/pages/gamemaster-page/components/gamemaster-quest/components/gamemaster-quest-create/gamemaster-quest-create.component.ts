@@ -8,9 +8,8 @@ import {GamemasterSuggestTasksComponent} from './components/gamemaster-suggest-t
 import {QuestService} from '../../../../../../services/quest.service';
 import {GamemasterQuestComponent} from 'app/pages/gamemaster-page/components/gamemaster-quest/gamemaster-quest.component';
 import {TaskService} from '../../../../../../services/task.service';
-import { QuestState } from 'app/Interfaces/QuestState';
-import { UserService } from 'app/services/user.service';
-import { User } from 'app/Interfaces/User';
+import {UserService} from 'app/services/user.service';
+import {User} from 'app/Interfaces/User';
 
 @Component({
   selector: 'app-gamemaster-quest-create',

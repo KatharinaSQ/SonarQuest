@@ -1,10 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Raid} from '../../Interfaces/Raid';
 import {Monster} from '../../Interfaces/Monster';
 import {Task} from '../../Interfaces/Task';
 import {Quest} from '../../Interfaces/Quest';
-import {LeaderBoard, RaidLeaderboard} from '../../Interfaces/RaidLeaderboard';
-import {Subscription} from 'rxjs';
+import {LeaderBoard} from '../../Interfaces/RaidLeaderboard';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RaidService} from '../../services/raid.service';
 import {EventService} from '../../services/event.service';

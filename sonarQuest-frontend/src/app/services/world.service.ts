@@ -1,10 +1,9 @@
-import {Observable, Subscriber, ReplaySubject} from 'rxjs';
+import {Observable, ReplaySubject, Subject} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {World} from '../Interfaces/World';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from './user.service';
-import { Subject } from 'rxjs';
 
 @Injectable()
 export class WorldService {

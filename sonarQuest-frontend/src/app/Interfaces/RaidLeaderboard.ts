@@ -1,11 +1,10 @@
-import { UserDto } from './UserDto';
-import {User} from './User';
+import {UserDto} from './UserDto';
 
 export interface RaidLeaderboard {
-    scoreGold: number,
-    scoreXp: number,
-    scoreDate: Date,
-    user: UserDto,
+  scoreGold: number,
+  scoreXp: number,
+  scoreDate: Date,
+  user: UserDto,
 }
 
 export interface LeaderBoard {

@@ -1,7 +1,6 @@
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {GamemasterArtefactCreateComponent} from './../../gamemaster-artefact-create.component';
-import {Component, OnInit, Inject} from '@angular/core';
-import {ViewEncapsulation} from '@angular/core';
+import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-gamemaster-icon-select',

@@ -1,16 +1,16 @@
-import { Raid } from './../Interfaces/Raid';
-import { User } from './../Interfaces/User';
+import {Raid} from './../Interfaces/Raid';
+import {User} from './../Interfaces/User';
 import {Adventure} from './../Interfaces/Adventure';
-import {Subject, Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {Quest} from '../Interfaces/Quest';
 import {World} from '../Interfaces/World';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Task} from '../Interfaces/Task';
 import {ParticipationService} from './participation.service';
 import {TaskService} from './task.service';
-import { UserService } from './user.service';
+import {UserService} from './user.service';
 import {SolvedTaskHistoryDto} from '../Interfaces/SolvedTaskHistoryDto';
 
 @Injectable()

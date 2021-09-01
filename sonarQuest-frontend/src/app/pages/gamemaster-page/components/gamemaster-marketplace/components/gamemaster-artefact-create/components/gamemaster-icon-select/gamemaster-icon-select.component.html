@@ -5,9 +5,10 @@
 <div class="icon-content">
   <mat-grid-list cols="5" rowHeight="1:1">
     <mat-grid-tile *ngFor="let image of images">
-      <button *ngIf="selectedImage == image" mat-raised-button color="primary" (click)="select(image)" class="percent100">
+      <button *ngIf="selectedImage == image" mat-raised-button color="primary" (click)="select(image)"
+              class="percent100">
         <img [src]="image">
-             </button>
+      </button>
       <button *ngIf="selectedImage !== image" mat-button (click)="select(image)" class="percent100">
         <img [src]="image">
       </button>

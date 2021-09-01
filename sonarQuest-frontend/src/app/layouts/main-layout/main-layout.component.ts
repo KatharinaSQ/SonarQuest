@@ -14,7 +14,6 @@ import {UiDesign} from 'app/Interfaces/UiDesign';
 import {EventService} from 'app/services/event.service';
 import {MatSidenav} from '@angular/material/sidenav';
 import {MatDialog} from '@angular/material';
-import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
 import {RulesComponent} from './rules/rules.component';
 
 @Component({

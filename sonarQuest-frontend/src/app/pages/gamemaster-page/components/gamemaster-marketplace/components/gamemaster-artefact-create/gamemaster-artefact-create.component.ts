@@ -1,19 +1,19 @@
 import {GamemasterIconSelectComponent} from './components/gamemaster-icon-select/gamemaster-icon-select.component';
 import {
+  IPageChangeEvent,
   ITdDataTableColumn,
-  TdDataTableService,
-  TdDataTableSortingOrder,
   ITdDataTableSortChangeEvent,
-  IPageChangeEvent
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 import {Skill} from './../../../../../../Interfaces/Skill';
 import {SkillService} from './../../../../../../services/skill.service';
 import {GamemasterSkillCreateComponent} from './components/gamemaster-skill-create/gamemaster-skill-create.component';
 import {ArtefactService} from './../../../../../../services/artefact.service';
 import {GamemasterMarketplaceComponent} from './../../gamemaster-marketplace.component';
-import {MatDialogRef, MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {Component, OnInit} from '@angular/core';
-import { GamemasterSkillEditComponent } from '../gamemaster-artefact-edit/components/gamemaster-skill-edit/gamemaster-skill-edit.component';
+import {GamemasterSkillEditComponent} from '../gamemaster-artefact-edit/components/gamemaster-skill-edit/gamemaster-skill-edit.component';
 
 @Component({
   selector: 'app-gamemaster-artefact-create',

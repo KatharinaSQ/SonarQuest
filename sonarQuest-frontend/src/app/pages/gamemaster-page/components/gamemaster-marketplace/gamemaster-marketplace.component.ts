@@ -1,18 +1,18 @@
-import { GamemasterArtefactEditComponent } from './components/gamemaster-artefact-edit/gamemaster-artefact-edit.component';
-import { MatDialog } from '@angular/material';
-import { GamemasterArtefactCreateComponent } from './components/gamemaster-artefact-create/gamemaster-artefact-create.component';
+import {GamemasterArtefactEditComponent} from './components/gamemaster-artefact-edit/gamemaster-artefact-edit.component';
+import {MatDialog} from '@angular/material';
+import {GamemasterArtefactCreateComponent} from './components/gamemaster-artefact-create/gamemaster-artefact-create.component';
 import {
-  ITdDataTableSortChangeEvent,
   IPageChangeEvent,
   ITdDataTableColumn,
-  TdDataTableSortingOrder,
-  TdDataTableService
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
-import { ArtefactService } from './../../../../services/artefact.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Artefact } from '../../../../Interfaces/Artefact';
-import { TranslateService } from '@ngx-translate/core';
-import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
+import {ArtefactService} from './../../../../services/artefact.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Artefact} from '../../../../Interfaces/Artefact';
+import {TranslateService} from '@ngx-translate/core';
+import {SwalComponent} from '@sweetalert2/ngx-sweetalert2';
 
 @Component({
   selector: 'app-gamemaster-marketplace',
@@ -22,7 +22,7 @@ import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 export class GamemasterMarketplaceComponent implements OnInit {
 
-  @ViewChild('cannotDeleteArtefactSwal', { static: false }) private cannotDeleteArtefactSwal: SwalComponent;
+  @ViewChild('cannotDeleteArtefactSwal', {static: false}) private cannotDeleteArtefactSwal: SwalComponent;
   @ViewChild('deleteSuccessArtefactSwal', { static: false }) private deleteSuccessArtefactSwal: SwalComponent;
 
   artefacts: Artefact[];

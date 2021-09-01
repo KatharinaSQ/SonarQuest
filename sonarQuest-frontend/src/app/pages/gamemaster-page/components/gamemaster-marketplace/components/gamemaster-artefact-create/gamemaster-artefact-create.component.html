@@ -46,16 +46,17 @@
   <button mat-raised-button (click)="createSkill()">{{"SKILL.ADD_SKILL" | translate}}</button>
 </mat-toolbar>
 
-<td-data-table #dataTable [data]="filteredSkills" [columns]="columns" [sortable]="true" [sortBy]="sortBy" [(ngModel)]="selectedRows"
-  [sortOrder]="sortOrder" (sortChange)="sort($event)">
+<td-data-table #dataTable [data]="filteredSkills" [columns]="columns" [sortable]="true" [sortBy]="sortBy"
+               [(ngModel)]="selectedRows"
+               [sortOrder]="sortOrder" (sortChange)="sort($event)">
   <ng-template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-        <button mat-icon-button (click)="editSkill(row)" [matTooltip]="'GLOBAL.EDIT' | translate"
-        [matTooltipClass]="'tooltipMultiline'" matTooltipPosition="below">
+      <button mat-icon-button (click)="editSkill(row)" [matTooltip]="'GLOBAL.EDIT' | translate"
+              [matTooltipClass]="'tooltipMultiline'" matTooltipPosition="below">
         <i class="ra ra-quill-ink ra-2x"></i>
       </button>
       <button mat-icon-button (click)="removeSkill(row)" [matTooltip]="'GLOBAL.DELETE' | translate"
-        [matTooltipClass]="'tooltipMultiline'" matTooltipPosition="below">
+              [matTooltipClass]="'tooltipMultiline'" matTooltipPosition="below">
         <i class="ra ra-broken-skull ra-2x"></i>
       </button>
     </div>
