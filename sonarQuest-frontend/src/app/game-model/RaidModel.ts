@@ -18,7 +18,6 @@ export class RaidModel implements Raid {
     gold: number;
     xp: number;
     quests: Quest[];
-    raidLeaderboadList: RaidLeaderboard[];
     monsterImage: string;
     monsterName: string;
     users: any;

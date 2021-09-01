@@ -182,9 +182,8 @@ export class QuestService {
     return this.http.delete(`${environment.endpoint}/quest/${quest.id}/removeRaid`)
       .toPromise()
   }
-
-  getSolvedTaskHistoryListForAllQuests(world: World): Observable< SolvedTaskHistoryDto[] > {
-    const url = `${environment.endpoint}/dashboard/${world}`;
+  getSolvedTaskHistoryListForAllQuests(worldId: any): Observable< SolvedTaskHistoryDto[] > {
+    const url = `${environment.endpoint}/quest/getSolvedTaskHistoryList/${worldId}`;
     return this.http.get<SolvedTaskHistoryDto[]>(url);
   }
 

@@ -44,6 +44,9 @@ public class GratificationService implements UserGratification {
     
     @Autowired
 	private RaidLeaderboardService raidLeaderboardService;
+
+    @Autowired
+    private LeaderBoardService dashboardLeaderboardService;
     
     @Override
     @Transactional
@@ -62,7 +65,7 @@ public class GratificationService implements UserGratification {
             
             // Update LeaderBoard for solving task
             raidLeaderboardService.updateLeaderboardScore(user, task.getQuest().getRaid(), task.getGold(), task.getXp());
-            
+            dashboardLeaderboardService.updateLeaderboardScore(user, user.getCurrentWorld(),task.getGold(), task.getXp());
         } else {
             LOGGER.info("No SQUser participations found for task {}, so no rewards are paid out", task.getKey());
         }
@@ -100,6 +103,7 @@ public class GratificationService implements UserGratification {
                 
                 // Update LeaderBoard for solving quest
                 raidLeaderboardService.updateLeaderboardScore(user, quest.getRaid(), quest.getGold(), quest.getXp());
+                dashboardLeaderboardService.updateLeaderboardScore(user, user.getCurrentWorld(),quest.getGold(), quest.getXp());
             }
         } else {
             LOGGER.warn("Quest with ID {} is called for rewarding but is already solved. No rewards will be paid out.",
@@ -138,6 +142,7 @@ public class GratificationService implements UserGratification {
             userService.save(user);
             
             raidLeaderboardService.updateLeaderboardScore(user, raid, gold, xp);
+            dashboardLeaderboardService.updateLeaderboardScore(user, user.getCurrentWorld(),gold, xp);
         } else {
             LOGGER.warn("Raid with ID {} is called for rewarding but is already solved. No rewards will be paid out.",
                     raid.getId());

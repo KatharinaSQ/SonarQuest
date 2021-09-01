@@ -1,17 +1,9 @@
 package com.viadee.sonarquest.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
@@ -56,6 +48,9 @@ public class World {
     @JsonIgnore
     @OneToMany(mappedBy = "world", cascade = CascadeType.ALL)
     private List<Task> tasks;
+
+    @OneToMany(mappedBy = "world", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Leaderboard> leaderboard;
 
     @JsonIgnore
     @ManyToMany
@@ -124,8 +119,14 @@ public class World {
         return tasks;
     }
 
-    public void setTasks(final List<Task> tasks) {
-        this.tasks = tasks;
+    public List<Leaderboard> getLeaderboard() {
+        if(leaderboard==null)
+            leaderboard = new ArrayList<Leaderboard>();
+        return leaderboard;
+    }
+
+    public void setLeaderboard(final List<Leaderboard> leaderboard) {
+        this.leaderboard = leaderboard;
     }
 
     public String getImage() {

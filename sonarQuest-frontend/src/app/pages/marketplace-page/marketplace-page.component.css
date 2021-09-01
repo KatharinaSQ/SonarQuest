@@ -25,10 +25,11 @@
   height: 100%;
   padding: 0;
   margin: 0;
+  justify-content: stretch !important;
 }
 
 .meine-artefakte {
-  justify-content: flex-start !important;
+
 }
 
 .marktplatz {
@@ -44,6 +45,10 @@
   padding: .25rem;
   padding-top: 45px;
   padding-bottom: 20px;
+}
+
+.mat-card-content {
+
 }
 
 

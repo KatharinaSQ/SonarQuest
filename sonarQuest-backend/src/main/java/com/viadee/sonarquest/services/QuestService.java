@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import com.viadee.sonarquest.dto.SolvedTaskHistoryDTO;
 import com.viadee.sonarquest.exception.BackendServiceRuntimeException;
+import com.viadee.sonarquest.repositories.WorldRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,8 +27,12 @@ import com.viadee.sonarquest.repositories.QuestRepository;
 import com.viadee.sonarquest.repositories.TaskRepository;
 import com.viadee.sonarquest.rules.SonarQuestStatus;
 
+
 @Service
 public class QuestService implements QuestSuggestion {
+
+    @Autowired
+    private WorldService worldService;
 
     @Autowired
     private QuestRepository questRepository;
@@ -135,6 +140,18 @@ public class QuestService implements QuestSuggestion {
         result.add(freeQuests);
         return result;
     }
+    public List<SolvedTaskHistoryDTO> getSolvedTaskHistoryforAllQuests(final Long worldId){
+        World world = worldService.findById(worldId);
+        final List<Quest> allQuestsForWorld = questRepository.findByWorld(world);
+        if(allQuestsForWorld==null)
+            new BackendServiceRuntimeException("Could not calculate solved tasks - quest is null!", new NullPointerException());
+
+        List<Task> tasks = new ArrayList<Task>();
+        allQuestsForWorld.stream().forEach(quest -> {
+            tasks.addAll(quest.getTasks());
+        });
+        return solvedTaskProgressService.getSolvedTaskHistory(tasks);
+    }
     
     
     /**
@@ -163,15 +180,6 @@ public class QuestService implements QuestSuggestion {
 		progressDTO.setCalculatedProgress(Math.round(100-(100*(double)openTaks/taskSize)));
 		return progressDTO;
 	}
-    public List<SolvedTaskHistoryDTO> getSolvedTaskHistoryforAllQuests(World world){
-        final List<Quest> allQuestsForWorld = questRepository.findByWorld(world);
-        if(allQuestsForWorld==null)
-            new BackendServiceRuntimeException("Could not calculate solved tasks - quest is null!", new NullPointerException());
-        List<Task> tasks = new ArrayList<Task>();
-        allQuestsForWorld.forEach(quest -> {
-            tasks.addAll(quest.getTasks());
-        });
-        return solvedTaskProgressService.getSolvedTaskHistory(tasks);
-    }
-  
+
+
 }

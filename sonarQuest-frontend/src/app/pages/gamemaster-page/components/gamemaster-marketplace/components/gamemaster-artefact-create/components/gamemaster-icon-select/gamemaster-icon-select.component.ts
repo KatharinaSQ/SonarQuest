@@ -11,6 +11,8 @@ import {ViewEncapsulation} from '@angular/core';
 })
 export class GamemasterIconSelectComponent implements OnInit {
 
+  images = ['assets/images/artefact/Affe.jpg', 'assets/images/artefact/Affe.jpg', 'assets/images/quest/hero1.jpg'];
+  selectedImage: string;
   icons = ['ra-arcane-mask', 'ra-all-for-one', 'ra-anvil', 'ra-archer', 'ra-archery-target', 'ra-arena', 'ra-arrow-cluster',
     'ra-arrow-flights', 'ra-axe', 'ra-axe-swing', 'ra-barbed-arrow', 'ra-barrier', 'ra-bat-sword', 'ra-battered-axe', 'ra-beam-wake',
     'ra-bear-trap', 'ra-bolt-shield', 'ra-bomb-explosion', 'ra-bombs', 'ra-bone-knife', 'ra-boomerang', 'ra-boot-stomp', 'ra-bowie-knife',
@@ -34,9 +36,19 @@ export class GamemasterIconSelectComponent implements OnInit {
   }
 
   ngOnInit() {
+/*    this.loadImages();*/
   }
 
   select(icon: string) {
     this.dialogRef.close(icon);
   }
+/*  loadImages() {
+    this.images = [{src: 'assets/images/artefact/Affe.jpg', name: 'affe'}];
+
+/!*    for (let i = 0; i < 15; i++) {
+      this.images[i] = {};
+      this.images[i].src = 'assets/images/quest/hero' + (i + 1) + '.jpg';
+      this.images[i].name = 'hero' + (i + 1);
+    }*!/
+  }*/
 }

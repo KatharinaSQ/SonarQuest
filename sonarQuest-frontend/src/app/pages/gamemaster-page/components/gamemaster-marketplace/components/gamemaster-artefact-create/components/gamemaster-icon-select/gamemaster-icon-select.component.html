@@ -4,13 +4,27 @@
 
 <div class="icon-content">
   <mat-grid-list cols="5" rowHeight="1:1">
-    <mat-grid-tile *ngFor="let icon of icons">
-      <button *ngIf="selectedIcon == icon" mat-raised-button color="primary" (click)="select(icon)" class="percent100">
-        <i matTooltipPosition="after" class="ra ra-5x" [ngClass]="icon"></i>
-      </button>
-      <button *ngIf="selectedIcon !== icon" mat-button (click)="select(icon)" class="percent100">
-        <i matTooltipPosition="after" class="ra ra-5x" [ngClass]="icon"></i>
+    <mat-grid-tile *ngFor="let image of images">
+      <button *ngIf="selectedImage == image" mat-raised-button color="primary" (click)="select(image)" class="percent100">
+        <img [src]="image">
+             </button>
+      <button *ngIf="selectedImage !== image" mat-button (click)="select(image)" class="percent100">
+        <img [src]="image">
       </button>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+
+<!--
+
+<div flex layout="row">
+  <span>{{"GLOBAL.IMAGE" | translate}}:</span>
+  <span class="vertical-spacer-10"></span>
+  <mat-select placeholder="{{'GLOBAL.CLICK_TO_SELECT' | translate}}" [(ngModel)]="selectedImage">
+    <mat-option *ngFor="let image of images" [value]="image.src">
+      <img [src]="image.src">
+      <span>{{image.name}}</span>
+    </mat-option>
+  </mat-select>
+</div>
+-->

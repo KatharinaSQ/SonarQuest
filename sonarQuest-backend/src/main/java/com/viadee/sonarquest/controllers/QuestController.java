@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.viadee.sonarquest.dto.SolvedTaskHistoryDTO;
 import org.apache.commons.lang3.BooleanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -240,6 +241,12 @@ public class QuestController {
         }
         return freeQuests;
     }
+    @GetMapping(value = "/getSolvedTaskHistoryList/{worldId}")
+    public List<SolvedTaskHistoryDTO> getSolvedTaskHistoryList(@PathVariable(value = "worldId") final Long worldId) {
+        final World world = worldRepository.findOne(worldId);
+        return questService.getSolvedTaskHistoryforAllQuests(worldId);
+    }
+
 
     @GetMapping(value = "/getAllQuestsForWorldAndUser/{worldId}")
     public List<List<Quest>> getAllQuestsForWorldAndUser(final Principal principal,

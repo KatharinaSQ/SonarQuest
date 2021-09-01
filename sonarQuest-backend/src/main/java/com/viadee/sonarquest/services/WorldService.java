@@ -64,6 +64,7 @@ public class WorldService {
         World currentWorld = null;
         if (world != null) {
             currentWorld = worldRepository.findOne(world.getId());
+            currentWorld.setLeaderboard(world.getLeaderboard());
             currentWorld.setName(world.getName());
             currentWorld.setBranch(world.getBranch());
             currentWorld.setFilter(world.getFilter());

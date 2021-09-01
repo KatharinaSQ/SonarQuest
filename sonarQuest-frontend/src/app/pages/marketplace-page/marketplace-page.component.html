@@ -112,6 +112,7 @@
               <mat-card class="artefact-image">
                 <mat-card-content>
                   <img src="assets/images/background/bg1.jpg">
+<!--                  <i class="ra ra-3x" [ngClass]="artefact.icon"></i>-->
                 </mat-card-content>
               </mat-card>
 
@@ -145,7 +146,7 @@
     <div class="col-md-3">
       <mat-card class="marktplatz">
         <mat-card-content>
-          <app-highscore></app-highscore>
+          <app-highscore [leaderboard]="leaderboard"></app-highscore>
         </mat-card-content>
       </mat-card>
     </div>

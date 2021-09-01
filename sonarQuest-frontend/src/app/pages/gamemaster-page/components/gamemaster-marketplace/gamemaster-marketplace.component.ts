@@ -9,7 +9,7 @@ import {
   TdDataTableService
 } from '@covalent/core';
 import { ArtefactService } from './../../../../services/artefact.service';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Artefact } from '../../../../Interfaces/Artefact';
 import { TranslateService } from '@ngx-translate/core';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
@@ -135,12 +135,12 @@ export class GamemasterMarketplaceComponent implements OnInit {
       } else {
         this.deleteSuccessArtefactSwal.show();
         this.update();
-       
+
       }
     });
 
   }
-  
+
   removeArtefactFromMarketplace(artefact: Artefact) {
     this.artefactService.removeArtefactFromMarketplace(artefact).then(() => {
       this.deleteSuccessArtefactSwal.show();

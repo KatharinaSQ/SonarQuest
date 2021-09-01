@@ -29,6 +29,8 @@ export class GamemasterArtefactCreateComponent implements OnInit {
   skills: Skill[] = [];
   description: string;
   icon = '';
+  images: any[];
+  selectedImage: string;
 
 
   columns: ITdDataTableColumn[] = [
@@ -58,7 +60,22 @@ export class GamemasterArtefactCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filter()
+    this.filter();
+    this.loadImages();
+  }
+  select(picture: string) {
+    this.dialogRef.close(picture);
+  }
+
+
+  loadImages() {
+    this.images = [];
+
+    for (let i = 0; i < 15; i++) {
+      this.images[i] = {};
+      this.images[i].src = 'assets/images/quest/hero' + (i + 1) + '.jpg';
+      this.images[i].name = 'hero' + (i + 1);
+    }
   }
 
   removeSkill(skill: Skill) {

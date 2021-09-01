@@ -9,6 +9,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.sql.SQLException;
+
 @SpringBootApplication
 @EnableScheduling
 public class SonarQuestApplication implements CommandLineRunner {
@@ -32,5 +34,6 @@ public class SonarQuestApplication implements CommandLineRunner {
             }
         };
     }
+
 
 }

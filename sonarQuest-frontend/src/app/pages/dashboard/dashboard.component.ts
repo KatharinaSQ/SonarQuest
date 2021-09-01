@@ -1,58 +1,43 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {WorldService} from '../../services/world.service';
 import {Raid} from '../../Interfaces/Raid';
 import {Monster} from '../../Interfaces/Monster';
 import {Task} from '../../Interfaces/Task';
 import {Quest} from '../../Interfaces/Quest';
-import {RaidLeaderboard} from '../../Interfaces/RaidLeaderboard';
+import {LeaderBoard, RaidLeaderboard} from '../../Interfaces/RaidLeaderboard';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RaidService} from '../../services/raid.service';
 import {EventService} from '../../services/event.service';
 import {QuestService} from '../../services/quest.service';
+import {WorldService} from '../../services/world.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit {
 
   public raid: Raid;
   public monster: Monster;
   public tasks: Task[] = [];
   public quests: Quest[] = [];
-  public raidLeaderBoardList: RaidLeaderboard[] = [];
-  private raidSubscription: Subscription;
+  public leaderboard: LeaderBoard[] = [];
+
 
   constructor(private route: ActivatedRoute, private router: Router, private raidService: RaidService,
-              private questService: QuestService, private eventService: EventService) {
+              private questService: QuestService, private eventService: EventService,
+              private worldService: WorldService) {
   }
-
-  ngOnDestroy(): void {
-/*    this.raidSubscription.unsubscribe();*/
-  }
-
   ngOnInit() {
-    this.getRaid();
-    /*    this.subscribeTaskEvent();*/
-  }
-
-
-  getRaid() {
-
     const _this = this;
-    this.raidSubscription = this.raidService.findRaidById(1).subscribe(resp => {
-      _this.raid = resp;
-      _this.raidLeaderBoardList = resp.raidLeaderboardList;
-      _this.quests = resp.quests;
-            this.sortLeaderBoard();
-
-    });
-
+    this.worldService.currentWorld$.subscribe(world => {
+      console.log(world);
+      _this.leaderboard = world.leaderboard;
+    })
   }
-  private sortLeaderBoard() {
-    this.raidLeaderBoardList.sort((score1, score2) => {
+/*  private sortLeaderBoard() {
+    this.leaderboard.sort((score1, score2) => {
       if (score1.scoreXp > score2.scoreXp) {
         return -1;
       }
@@ -61,5 +46,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
       return 0;
     });
-  }
+  }*/
 }

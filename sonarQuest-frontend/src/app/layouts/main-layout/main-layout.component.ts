@@ -40,6 +40,7 @@ export class MainLayoutComponent implements OnInit {
   /*  public adventuresUrl = RoutingUrls.adventures;*/
   public dashboardUrl = RoutingUrls.dashboard;
   public rulesUrl = RoutingUrls.rules;
+  public progressUrl = RoutingUrls.progress;
   public raidsUrl = RoutingUrls.raids;
   public qualityGateRaidUrl = RoutingUrls.qualitygate;
   public questsUrl = RoutingUrls.quests;
@@ -147,12 +148,14 @@ export class MainLayoutComponent implements OnInit {
     })
     this.worldService.worlds$.subscribe(worlds => {
       if (this.currentWorld == null) {
-        this.currentWorld = worlds[0]
+        this.currentWorld = worlds[0];
         this.setBackground();
+
       }
       this.worlds = worlds;
     })
   }
+
 
   private subscribeUnseenEvents() {
     this.eventService.unseenEvents$.subscribe(unseenEventsAvailable => {
@@ -203,33 +206,6 @@ export class MainLayoutComponent implements OnInit {
     }
   }
 
- /* ddeterminePageTitle() {
-    let url = this.router.url
-    if (url === '/start') {
-      return this.pageNames.STARTPAGE;
-    } else if (url === '/myAvatar') {
-      return this.pageNames.MY_AVATAR;
-    } else if (url === '/adventures') {
-      return this.pageNames.ADVENTURES;
-    } else if (url === '/raids') {
-      return this.pageNames.RAIDS;
-    } else if (url === '/quests') {
-      return this.pageNames.QUESTS;
-    } else if (url === '/marketplace') {
-      return this.pageNames.MARKETPLACE;
-    } else if (url === '/gamemaster') {
-      return this.pageNames.GAMEMASTER;
-    } else if (url === '/admin') {
-      return this.pageNames.ADMIN;
-    } else if (url === '/dashboard') {
-      return this.pageNames.DASHBOARD;
-    } else if (url === '/events') {
-      return this.pageNames.EVENTS;
-    } else {
-      return '';
-    }
-  }
-*/
   updateWorld(world: World) {
     this.worldService.setCurrentWorld(world);
   }

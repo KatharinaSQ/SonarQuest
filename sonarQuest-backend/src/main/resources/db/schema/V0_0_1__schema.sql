@@ -274,6 +274,17 @@ create TABLE Raid_Leaderboard (
  FOREIGN KEY (user_id) REFERENCES SQUser (id) ON DELETE SET NULL ON UPDATE CASCADE,
  FOREIGN KEY (raid_id) REFERENCES raid (id) ON DELETE SET NULL ON UPDATE CASCADE
 );
+create TABLE Leaderboard (
+ id       				BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ score_day	 			DATE,
+ score_Solved_Tasks  	BIGINT,
+ score_gold     		BIGINT,
+ score_xp				BIGINT,
+ world_id				BIGINT,
+ user_id				BIGINT,
+ FOREIGN KEY (user_id) REFERENCES SQUser (id) ON DELETE SET NULL ON UPDATE CASCADE,
+ FOREIGN KEY (world_id) REFERENCES World (id) ON DELETE SET NULL ON UPDATE CASCADE
+);
 
 
 

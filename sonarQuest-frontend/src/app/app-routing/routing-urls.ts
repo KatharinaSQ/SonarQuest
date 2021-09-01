@@ -15,4 +15,5 @@ export const RoutingUrls = {
   qualitygate: 'qualitygate',
   dashboard: 'dashboard',
   rules: 'rules',
+  progress: 'progress'
 };

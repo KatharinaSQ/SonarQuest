@@ -47,7 +47,7 @@
 </mat-toolbar>
 
 <td-data-table #dataTable [data]="filteredSkills" [columns]="columns" [sortable]="true" [sortBy]="sortBy" [(ngModel)]="selectedRows"
-  [sortOrder]="sortOrder" (sortChange)="sort($event)"> 
+  [sortOrder]="sortOrder" (sortChange)="sort($event)">
   <ng-template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
         <button mat-icon-button (click)="editSkill(row)" [matTooltip]="'GLOBAL.EDIT' | translate"
@@ -58,7 +58,7 @@
         [matTooltipClass]="'tooltipMultiline'" matTooltipPosition="below">
         <i class="ra ra-broken-skull ra-2x"></i>
       </button>
-    </div> 
+    </div>
   </ng-template>
 </td-data-table>
 

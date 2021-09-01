@@ -1,3 +1,6 @@
+import {LeaderBoard} from './RaidLeaderboard';
+
+
 export interface World {
   id: number,
   name: string,
@@ -7,5 +10,6 @@ export interface World {
   active: boolean,
   usequestcards: boolean,
   image: string,
-  hasQuests: boolean
+  hasQuests: boolean,
+  leaderboard: LeaderBoard[]
 }

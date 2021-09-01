@@ -14,6 +14,8 @@ import {MatDialog} from '@angular/material';
 import {ArtefactViewDetailsComponent} from './components/artefact-view-details/artefact-view-details.component';
 import {TranslateService} from '@ngx-translate/core';
 import {SwiperConfigInterface} from 'ngx-swiper-wrapper';
+import {LeaderBoard} from '../../Interfaces/RaidLeaderboard';
+import {WorldService} from '../../services/world.service';
 
 @Component({
   selector: 'app-marketplace-page',
@@ -26,6 +28,7 @@ export class MarketplacePageComponent implements OnInit {
   my_artefacts_id: number[] = [];
   public level: number;
   public gold: number;
+  public leaderboard: LeaderBoard[] = [];
 
   columns: ITdDataTableColumn[] = [
     {name: 'icon', label: '', width: {min: 80}},
@@ -71,7 +74,8 @@ export class MarketplacePageComponent implements OnInit {
     private userService: UserService,
     private dialog: MatDialog,
     private translateService: TranslateService,
-    private _dataTableService: TdDataTableService
+    private _dataTableService: TdDataTableService,
+    private worldService: WorldService
   ) {
   }
 
@@ -87,10 +91,14 @@ export class MarketplacePageComponent implements OnInit {
     });
 
 
+    const _this = this;
+    this.worldService.currentWorld$.subscribe(world => {
+      console.log(world);
+      _this.leaderboard = world.leaderboard;
+    });
     this.userService.user$.subscribe(user => {
       this.user = user
       this.artefactService.getData();
-
       this.userArtefacts = this.user.artefacts;
       this.userArtefacts.map(artefact => this.my_artefacts_id.push(artefact.id));
       if (user.level) {
