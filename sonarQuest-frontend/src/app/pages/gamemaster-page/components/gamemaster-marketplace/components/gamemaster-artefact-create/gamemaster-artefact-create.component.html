@@ -34,8 +34,19 @@
     </div>
     <div flex>
       <mat-form-field class="full-width">
-        <textarea matInput [placeholder]="'ARTEFACT.DESCRIPTION' | translate" maxlength="255" [(ngModel)]="description"></textarea>
+        <textarea matInput [placeholder]="'ARTEFACT.DESCRIPTION' | translate" maxlength="255"
+                  [(ngModel)]="description"></textarea>
       </mat-form-field>
+    </div>
+    <div flex layout="row">
+      <span>{{"GLOBAL.IMAGE" | translate}}:</span>
+      <span class="vertical-spacer-10"></span>
+      <mat-select placeholder="{{'GLOBAL.CLICK_TO_SELECT' | translate}}" [(ngModel)]="selectedImage">
+        <mat-option *ngFor="let image of images" [value]="image.src">
+          <img [src]="image.src">
+          <span>{{image.name}}</span>
+        </mat-option>
+      </mat-select>
     </div>
   </div>
 </mat-dialog-content>

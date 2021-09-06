@@ -1,10 +1,10 @@
-import { Subscription } from 'rxjs';
-import { RaidService } from 'app/services/raid.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Raid } from 'app/Interfaces/Raid';
-import { BaseMonster } from 'app/game-model/base-monster';
-import { WorldService } from 'app/services/world.service';
-import { World } from 'app/Interfaces/World';
+import {Subscription} from 'rxjs';
+import {RaidService} from 'app/services/raid.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Raid} from 'app/Interfaces/Raid';
+import {BaseMonster} from 'app/game-model/base-monster';
+import {WorldService} from 'app/services/world.service';
+import {World} from 'app/Interfaces/World';
 
 @Component({
   selector: 'app-raids-page',
@@ -23,8 +23,8 @@ export class RaidListPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.worldSub = this.worldService.currentWorld$.subscribe(world => {
       this.world = world;
+      this.loadRaids();
     });
-    this.loadRaids();
   }
 
   ngOnDestroy(): void {

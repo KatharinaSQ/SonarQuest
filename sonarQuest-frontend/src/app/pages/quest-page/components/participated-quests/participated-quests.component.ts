@@ -6,11 +6,11 @@ import {MatDialog} from '@angular/material';
 import {WorldService} from './../../../../services/world.service';
 import {QuestService} from './../../../../services/quest.service';
 import {
+  IPageChangeEvent,
   ITdDataTableColumn,
-  TdDataTableSortingOrder,
-  TdDataTableService,
   ITdDataTableSortChangeEvent,
-  IPageChangeEvent
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 import {Quest} from './../../../../Interfaces/Quest';
 import {Component, OnInit} from '@angular/core';
@@ -70,7 +70,7 @@ export class ParticipatedQuestsComponent implements OnInit {
       this.currentWorld = world
       this.loadQuests();
     })
-    
+
   }
 
   loadQuests() {
@@ -82,7 +82,7 @@ export class ParticipatedQuestsComponent implements OnInit {
       });
     }
   }
-  
+
   solveDummy(q: Quest){
     this.questService.solveQuestDummy(q)
   }
@@ -130,5 +130,10 @@ export class ParticipatedQuestsComponent implements OnInit {
     newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
+  }
+
+  toggleUsequestcards(world: World) {
+    world.usequestcards = !world.usequestcards;
+    this.worldService.updateWorld(world);
   }
 }

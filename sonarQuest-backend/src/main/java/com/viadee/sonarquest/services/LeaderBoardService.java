@@ -2,7 +2,6 @@ package com.viadee.sonarquest.services;
 
 import com.viadee.sonarquest.entities.*;
 import com.viadee.sonarquest.repositories.LeaderBoardRepository;
-import com.viadee.sonarquest.repositories.RaidLeaderboardRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,92 +1,14 @@
 <div class="background">
-<!--  <mat-card>
-    <mat-card-content>
-      <div layout-padding>
-        <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
-          <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-            <span *ngIf="!selectedRows.length || !selectable" class="mat-card-title" style="margin:0">
-              {{"MARKETPLACE_PAGE.MARKETPLACE"| translate}}
-            </span>
-          </span>
-          <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Suche" (searchDebounce)="search($event)"
-            flex>
-          </td-search-box>
-        </div>
-        <div>
-          <span>Gold: {{gold}} | Level: {{level}}</span>
-        </div>
-        <mat-divider></mat-divider>
-        <td-data-table #dataTable [data]="filteredData" [columns]="columns" [sortable]="true" [sortBy]="sortBy"
-          [(ngModel)]="selectedRows" [sortOrder]="sortOrder" (sortChange)="sort($event)">
-          <ng-template tdDataTableTemplate="icon" let-value="value" let-row="row" let-column="column">
-            <div layout="row">
-              <i class="ra ra-3x" [ngClass]="value"></i>
-            </div>
-          </ng-template>
-          <ng-template tdDataTableTemplate="buy" let-value="value" let-row="row" let-column="column">
-            <div layout="row">
-              <div *ngIf="!my_artefacts_id.includes(row.id)">
-                <button mat-icon-button (click)="buyArtefact(row)"
-                        [matTooltip]="'MARKETPLACE_PAGE.BUY_ITEM_COMPULSORY' | translate"
-                        [matTooltipClass]="'tooltipMultiline'"
-                        matTooltipPosition="below">
-                  <i class="ra ra-diamond ra-2x"></i>
-                </button>
-              </div>
-              <div *ngIf="my_artefacts_id.includes(row.id)">
-                <mat-icon class="icon"
-                          [matTooltip]="'MARKETPLACE_PAGE.ALREADY_OWNED_ITEM' | translate"
-                          [matTooltipClass]="'tooltipMultiline'"
-                          matTooltipPosition="below">check_box
-                </mat-icon>
-              </div>
-              <div layout="row">
-                <button mat-icon-button (click)="viewArtefact(row)"
-                        [matTooltip]="'MARKETPLACE_PAGE.SHOW_ITEM' | translate"
-                        [matTooltipClass]="'tooltipMultiline'"
-                        matTooltipPosition="below">
-                  <i class="ra ra-scroll-unfurled ra-2x"></i>
-                </button>
-              </div>
-            </div>
-          </ng-template>
-        </td-data-table>
-        <div class="mat-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
-          <h3>{{"TABLE.INFO.NO_ENTRIES"| translate}}</h3>
-        </div>
-        <td-paging-bar *ngIf="dataTable.hasData" #pagingBar [pageSize]="5" [total]="filteredTotal"
-                       (change)="page($event)">
-          <span td-paging-bar-label hide-xs>{{"TABLE.INFO.ENTRIES_OF_THIS_PAGE"| translate}}</span> {{pagingBar.range}}
-          <span hide-xs>{{"TABLE.INFO.OF"| translate}} {{pagingBar.total}}</span>
-        </td-paging-bar>
-      </div>
-    </mat-card-content>
-  </mat-card>-->
-
-
-  <!--  <div class="row">
-      <div class="col-md-3">
-        <mat-card>
-          <mat-card-content>
-            <h4>Meine Artefakte</h4>
-            <mat-grid-list cols="4" rowHeight="3:1">
-              <mat-grid-tile *ngFor="let artefact of user?.artefacts">
-                <i [matTooltip]="'Name:' + artefact.name + '\nSkills: ' + createSkillsList(artefact)" [matTooltipClass]="'tooltipMultiline'"
-                   matTooltipPosition="after" class="ra ra-3x" [ngClass]="artefact.icon"></i>
-                <span>{{artefact.name}}</span>
-              </mat-grid-tile>
-            </mat-grid-list>
-          </mat-card-content>
-        </mat-card>
-      </div>-->
-
   <div class="row">
     <div class="col-md-3">
       <mat-card class="marktplatz">
         <mat-card-content>
-          <h4 class="title">Meine Artefakte</h4>
+          <h4 class="title">{{user.username}}s Artefakte</h4>
           <mat-grid-list cols="1" rowHeight="3:1">
-            <mat-grid-tile class="artefact-liste" *ngFor="let artefact of artefacts">
+            <mat-grid-tile class="artefact-liste" *ngFor="let artefact of userArtefacts">
+
+              <img class="mein-artefact-image" [src]="artefact.icon">
+
               <i [matTooltip]="'Name:' + artefact.name + '\nSkills: ' + createSkillsList(artefact)"
                  [matTooltipClass]="'tooltipMultiline'"
                  matTooltipPosition="after" class="ra ra-3x" [ngClass]="artefact.icon"></i>
@@ -94,6 +16,15 @@
             </mat-grid-tile>
           </mat-grid-list>
         </mat-card-content>
+        <div class="goldandlevel">
+          <mat-card>
+            <mat-card-content>
+              Stufe: {{user.level.levelNumber}}
+              Gold: {{user.gold}}
+              <em mat-list-icon class="ra ra-gold-bar ra-lg"></em>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </mat-card>
     </div>
 
@@ -111,32 +42,36 @@
 
               <mat-card class="artefact-image">
                 <mat-card-content>
-                  <img src="assets/images/background/bg1.jpg">
-<!--                  <i class="ra ra-3x" [ngClass]="artefact.icon"></i>-->
+                  <img [src]="artefact.icon">
                 </mat-card-content>
               </mat-card>
 
-
-              <span class="description-artefakt">{{artefact.description}}</span>
-
-
               <div class="title">
                 Kosten:
-                <em mat-list-icon class="ra ra-gold-bar ra-lg"></em>
                 <span class="p-1">{{artefact.price}}
+                  <em mat-list-icon class="ra ra-gold-bar ra-lg"></em>
                 </span>
-                Verfügbar
-                <em mat-list-icon class="ra ra-gold-bar ra-lg"></em>
+                Stufe:
+                <span class="p-1">{{artefact.minLevel.levelNumber}}
+                  <em mat-list-icon class="ra ra-perspective-dice-random ra-lg"></em>
+                </span>
+                Verfügbar:
                 <span class="p-1">
                   {{artefact.quantity}}
                 </span>
-                Stufe
-                <em mat-list-icon class="ra ra-perspective-dice-random ra-lg"></em>
-                <span class="p-1">{{artefact.minLevel.levelNumber}}
-                </span>
                 <br>
               </div>
-              <button mat-raised-button style="margin-top: 10px">Kaufen</button>
+              <span class="description-artefakt">{{artefact.description}}</span>
+              <div>
+                <button (click)="buyArtefact(artefact)" mat-icon-button style="padding-top: 120px"
+                        [matTooltip]="'Artefakt kaufen'"
+                        [matTooltipClass]="'tooltipMultiline'" matTooltipPosition="below">
+                  <i class="ra ra-diamond ra-3x"></i>
+                </button>
+              </div>
+              <div style="padding-top: 10px">
+                <h4>Kaufen</h4>
+              </div>
             </mat-card-content>
 
           </div>

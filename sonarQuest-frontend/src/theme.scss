@@ -15,7 +15,7 @@ $theme: light;
   $theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
 } @else {
-  $primary: mat-palette($mat-blue-grey, 800);
+  $primary: mat-palette($mat-grey, 600, A100, A400);
   $success: mat-palette($mat-green, 800);
   $accent: mat-palette($mat-light-blue, 600, A100, A400);
   $warn: mat-palette($mat-red, 600);

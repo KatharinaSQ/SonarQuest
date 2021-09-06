@@ -71,10 +71,10 @@ export class GamemasterArtefactCreateComponent implements OnInit {
   loadImages() {
     this.images = [];
 
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 14; i++) {
       this.images[i] = {};
-      this.images[i].src = 'assets/images/quest/hero' + (i + 1) + '.jpg';
-      this.images[i].name = 'hero' + (i + 1);
+      this.images[i].src = 'assets/images/artefact/artefact' + (i + 1) + '.jpg';
+      this.images[i].name = 'artefact' + (i + 1);
     }
   }
 
@@ -136,7 +136,7 @@ export class GamemasterArtefactCreateComponent implements OnInit {
         quantity: this.quantity,
         description: this.description,
         skills: this.skills,
-        icon: this.icon,
+        icon: this.selectedImage,
         minLevel: {
           levelNumber: this.min
         }

@@ -1,5 +1,5 @@
 #questcard {
-  background-image: url('/assets/images/dagger.png');
+/*  background-image: url('/assets/images/dagger.png');*/
   background-repeat: no-repeat;
   background-position: top;
   background-blend-mode: difference;
@@ -18,28 +18,45 @@
 .quest_picture {
   position: absolute;
   left: 35%;
-  width: 80px;
-  height: 80px;
+  /*  width: 80px;
+    height: 80px;*/
 
 }
 
 .title {
-  position: inherit;
-  left: 20%;
+  position: center;
 }
-
 .mat-card-dashboard {
-  box-shadow: 3px 3px black, -1em 0 0.4em black !important;
-  background-color: #6c757d !important;
+  box-shadow: 0 0 lightgrey, -0.2em 0 0.4em grey !important;
+  background-color: rgb(156, 125, 125) !important;
+  /*  background-color: rgb(211, 211, 211) !important;*/
+  /*  background-color: rgb(128, 128, 128) !important;*/
+  /*  background-color: rgb(239, 231, 219) !important;*/
+
 }
 
 .quest-belohnung-pos {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 32px;
+  left: 20px;
+  font-size: unset;
 }
 
 .useQuestCards {
-  position: relative;
+  position: absolute;
   right: 0;
 }
+
+.quest-icon {
+  height: 100px;
+  width: 220px;
+  border-radius: 10%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.mat-card-title {
+  position: absolute;
+  top: 36%;
+}
+

@@ -13,7 +13,8 @@
 }
 /*Hintergrund MAT CARDS  LIGHT*/
 .light mat-card, .light mat-sidenav {
-  background-color: rgba(255, 255, 255, 255) !important;
+  /*  background-color: rgb(255, 255, 255) !important;*/
+  background-color: rgb(229, 224, 224) !important;
 }
 
 .light mat-card mat-toolbar {
@@ -47,7 +48,7 @@ mat-toolbar.mat-toolbar.mat-primary i.navlist.mat-list-icon {
 }
 
 .dark mat-card-subtitle {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: rgba(255, 255, 255, 1) !important;
 }
 
 .dark mat-card mat-toolbar,
@@ -211,7 +212,7 @@ i.navlist{
   overflow-y: scroll;
 }
 
-.percent100{
-  height: 100%;
-  width: 100%;
+.percent100 {
+  height: 200px;
+  width: 200px;
 }

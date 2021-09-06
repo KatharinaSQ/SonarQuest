@@ -33,9 +33,12 @@ export class DashboardComponent implements OnInit {
     this.worldService.currentWorld$.subscribe(world => {
       console.log(world);
       _this.leaderboard = world.leaderboard;
+      this.sortLeaderBoard();
     })
+
   }
-/*  private sortLeaderBoard() {
+
+  private sortLeaderBoard() {
     this.leaderboard.sort((score1, score2) => {
       if (score1.scoreXp > score2.scoreXp) {
         return -1;
@@ -45,5 +48,5 @@ export class DashboardComponent implements OnInit {
       }
       return 0;
     });
-  }*/
+  }
 }

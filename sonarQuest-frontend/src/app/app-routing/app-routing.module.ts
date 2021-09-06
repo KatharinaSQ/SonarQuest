@@ -24,8 +24,9 @@ import {ProgressComponent} from '../pages/dashboard/progress/progress.component'
 const appRoutes: Routes = [
   {
     path: '', component: MainLayoutComponent, canActivateChild: [AuthenticationGuard], children: [
-      {path: '', redirectTo: RoutingUrls.myAvatar, pathMatch: 'full'},
+      {path: '', redirectTo: RoutingUrls.dashboard, pathMatch: 'full'},
       {path: RoutingUrls.start, component: StartPageComponent},
+      {path: RoutingUrls.dashboard, component: DashboardComponent},
       {path: RoutingUrls.myAvatar, component: MyAvatarPageComponent},
       {path: RoutingUrls.adventures, component: AdventurePageComponent},
       {path: RoutingUrls.quests, component: QuestPageComponent},
@@ -36,7 +37,6 @@ const appRoutes: Routes = [
       {path: RoutingUrls.raids, component: RaidListPageComponent},
       {path: RoutingUrls.raid, component: RaidPageComponent},
       {path: RoutingUrls.qualitygate, component: QualitygatePageComponent},
-      {path: RoutingUrls.dashboard, component: DashboardComponent},
       {path: RoutingUrls.rules, component: RulesComponent},
       {path: RoutingUrls.progress, component: ProgressComponent},
     ]

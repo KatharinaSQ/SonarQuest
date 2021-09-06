@@ -120,10 +120,10 @@ export class GamemasterQuestCreateComponent implements OnInit {
   loadImages() {
     this.images = [];
 
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 20; i++) {
       this.images[i] = {};
-      this.images[i].src = 'assets/images/quest/hero' + (i + 1) + '.jpg';
-      this.images[i].name = 'hero' + (i + 1);
+      this.images[i].src = 'assets/images/quest/quest' + (i + 1) + '.jpg';
+      this.images[i].name = 'quest' + (i + 1);
     }
   }
 }

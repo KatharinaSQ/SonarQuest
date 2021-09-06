@@ -29,7 +29,7 @@ export class MyAvatarPageComponent implements OnInit {
       this.user = user;
       this.level = (this.user.level == undefined ? 1 : this.user.level.levelNumber);
       this.maxXp = (this.level > 1 ? this.user.level.maxXp : this.minXpForLevel2);
-      this.xpPercent();      
+      this.xpPercent();
       this.getAvatar();
     })
   }

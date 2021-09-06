@@ -6,3 +6,20 @@
 .example-sidenav-content {
   opacity: 1;
 }
+
+.artefact {
+  align-items: normal !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+
+  padding: 0;
+  margin: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 10%;
+
+}

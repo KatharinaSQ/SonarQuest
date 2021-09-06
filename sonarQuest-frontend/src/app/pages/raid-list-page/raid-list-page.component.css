@@ -2,9 +2,34 @@
 
   background-size: cover;
   background-repeat: no-repeat;
-
+  background-position: top;
   min-height: 300px;
   max-height: 300px;
   min-width: 250px;
   max-width: 250px;
+}
+
+#questcard {
+  /*  background-image: url('/assets/images/dagger.png');*/
+  background-repeat: no-repeat;
+  background-position: top;
+  background-blend-mode: difference;
+  min-height: 300px;
+  max-height: 300px;
+
+}
+
+.mat-card-actions {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.progress-raid {
+  position: absolute;
+  bottom: 20px;
+}
+
+.img {
+  top: 20px;
 }

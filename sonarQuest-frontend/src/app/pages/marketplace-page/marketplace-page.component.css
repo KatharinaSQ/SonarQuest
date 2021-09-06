@@ -15,21 +15,8 @@
   min-width: 120%;
 }
 
-.mat-grid-tile .mat-figure .artefact-liste {
-  top: 250rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  display: flex;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  justify-content: stretch !important;
-}
-
 .meine-artefakte {
-
+  left: 0 !important;
 }
 
 .marktplatz {
@@ -39,43 +26,44 @@
 
 .title {
   margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.mein-artefact-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  align-items: normal !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.goldandlevel {
+  position: absolute;
+  align-items: center;
+  display: flex;
+  bottom: 10px;
+}
+
+.artefact-liste {
+  left: 10px;
 }
 
 .description-artefakt {
   padding: .25rem;
   padding-top: 45px;
   padding-bottom: 20px;
+  padding-right: 45px;
+  padding-left: 45px;
 }
 
 .mat-card-content {
 
 }
-
-
-/*
-
-@font-face {
-  font-family: 'RPGAwesome';
-  src: url("../fonts/rpgawesome-webfont.eot?v=0.1.0");
-  src: url("../fonts/rpgawesome-webfont.eot?#iefix&v=0.1.0") format("embedded-opentype"), url("../fonts/rpgawesome-webfont.woff?v=0.1.0") format("woff"), url("../fonts/rpgawesome-webfont.ttf?v=0.1.0") format("truetype"), url("../fonts/rpgawesome-webfont.svg?v=0.1.0#rpg-awesome") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-.ra {
-  font-family: RPGAwesome;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1;
-  speak: none;
-  text-transform: none;
-}
-
-!* makes the font 33% larger relative to the icon container *!
-.ra-lg {
-  font-size: 1.33333em;
-  line-height: 0.75em;
-  vertical-align: -15%;
-}*/

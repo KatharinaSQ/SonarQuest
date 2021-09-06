@@ -285,7 +285,6 @@ export class MainLayoutComponent implements OnInit {
   toggleDesign() {
     const dark = 'dark';
     const light = 'light';
-    const yellow = 'yellow';
 
     if (this.hasClass(this.body, light)) { // If light is choosen, change to dark
       this.body.className = this.removeSubString(this.body.className, light);

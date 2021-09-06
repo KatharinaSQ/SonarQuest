@@ -73,7 +73,7 @@ export class AvailableQuestsComponent implements OnInit, OnDestroy {
     }));
   }
   ngOnDestroy(): void {
-    for (const s of this.subscriptionList){
+    for (const s of this.subscriptionList) {
       s.unsubscribe();
     }
   }

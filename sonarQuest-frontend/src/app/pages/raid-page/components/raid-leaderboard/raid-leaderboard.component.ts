@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {RaidLeaderboard} from 'app/Interfaces/RaidLeaderboard';
 import {ITdDataTableColumn} from '@covalent/core';
+import {Raid} from '../../../../Interfaces/Raid';
 
 @Component({
   selector: 'app-raid-leaderboard',
@@ -10,6 +11,8 @@ import {ITdDataTableColumn} from '@covalent/core';
 export class RaidLeaderboardComponent implements OnInit {
   @Input()
   raidLeaderboard: RaidLeaderboard[];
+  @Input()
+  raid: Raid;
 
   columns: ITdDataTableColumn[] = [
     {name: 'user.username', label: 'Name'},
