@@ -1,7 +1,8 @@
-<mat-card *ngIf="!currentWorld?.usequestcards">
-  <mat-slide-toggle class="useQuestCards" (click)="toggleUsequestcards(currentWorld)">Quest Ansicht</mat-slide-toggle>
-
-  <mat-card-content>
+<mat-slide-toggle class="useQuestCards" (click)="toggleUsequestcards(currentWorld)"
+                  [checked]="!currentWorld?.usequestcards">Quest Ansicht
+</mat-slide-toggle>
+<div *ngIf="!currentWorld?.usequestcards">
+  <div>
     <div layout-padding>
       <h2>{{"QUEST_PAGE.MY_QUESTS_FOR_WORLD"| translate}}
         <strong>{{currentWorld?.name}}</strong></h2>
@@ -37,13 +38,11 @@
         <span hide-xs>{{"TABLE.INFO.OF"| translate}} {{pagingBar.total}}</span>
       </td-paging-bar>
     </div>
-  </mat-card-content>
-</mat-card>
+  </div>
+</div>
 
 
-<mat-card *ngIf="currentWorld?.usequestcards">
-  <mat-slide-toggle class="useQuestCards" (click)="toggleUsequestcards(currentWorld)">Quest Ansicht</mat-slide-toggle>
-
+<div *ngIf="currentWorld?.usequestcards">
   <mat-card-content>
     <div align="center" *ngIf="currentWorld?.name">
       <h2>
@@ -94,4 +93,4 @@
     </div>
 
   </mat-card-content>
-</mat-card>
+</div>

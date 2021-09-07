@@ -9,12 +9,19 @@
   max-height: 300px;
   min-width: 250px;
   max-width: 250px;
+
 }
 
-.mat-card-dashboard {
+.light .mat-card-dashboard {
   box-shadow: 0 0 lightgrey, -0.2em 0 0.4em grey !important;
   background-color: rgb(156, 125, 125) !important;
   /*  background-color: #6c757d !important;*/
+}
+
+.dark .mat-card-dashboard {
+  box-shadow: 0 0 lightgrey, -0.2em 0 0.4em grey !important;
+  /*  background-color: rgb(156, 125, 125) !important;*/
+  background-color: #6c757d !important;
 }
 
 .quest-belohnung-pos {
@@ -27,7 +34,7 @@
 .quest-icon {
   height: 100px;
   width: 220px;
-  border-radius: 10%;
+  border-radius: 2%;
   flex-shrink: 0;
   object-fit: cover;
 }

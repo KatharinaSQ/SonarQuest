@@ -1,35 +1,21 @@
 <div class="background">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3" style="padding-right: 0">
       <mat-card class="marktplatz">
         <mat-card-content>
-          <h4 class="title">{{user.username}}s Artefakte</h4>
+          <h4 class="title">{{user?.username}}s Artefakte</h4>
           <mat-grid-list cols="1" rowHeight="3:1">
             <mat-grid-tile class="artefact-liste" *ngFor="let artefact of userArtefacts">
-
-              <img class="mein-artefact-image" [src]="artefact.icon">
-
-              <i [matTooltip]="'Name:' + artefact.name + '\nSkills: ' + createSkillsList(artefact)"
-                 [matTooltipClass]="'tooltipMultiline'"
-                 matTooltipPosition="after" class="ra ra-3x" [ngClass]="artefact.icon"></i>
-              <span>{{artefact.name}}</span>
+              <img class="mein-artefact-image" [src]="artefact?.icon" [matTooltip]="artefact.description">
+              <span style="position: absolute; left: 105px"> {{artefact?.name}}</span>
             </mat-grid-tile>
           </mat-grid-list>
         </mat-card-content>
-        <div class="goldandlevel">
-          <mat-card>
-            <mat-card-content>
-              Stufe: {{user.level.levelNumber}}
-              Gold: {{user.gold}}
-              <em mat-list-icon class="ra ra-gold-bar ra-lg"></em>
-            </mat-card-content>
-          </mat-card>
-        </div>
       </mat-card>
     </div>
 
 
-    <div class="col-md-6">
+    <div class="col-md-6" style="padding-right: 0;padding-left: 0">
       <mat-card class="marktplatz ">
 
         <swiper [config]="swiperConfig" [index]="slideIndex">
@@ -37,40 +23,37 @@
             <mat-card-content class=" d-flex flex-column align-items-center">
 
                 <span>
-                  <h4 class="title"> {{artefact.name}} </h4>
+                  <h4 class="title"> {{artefact?.name}} </h4>
                 </span>
 
               <mat-card class="artefact-image">
-                <mat-card-content>
-                  <img [src]="artefact.icon">
+                <mat-card-content class="artefact-image-rahmen">
+                  <img [src]="artefact?.icon">
                 </mat-card-content>
               </mat-card>
 
               <div class="title">
                 Kosten:
-                <span class="p-1">{{artefact.price}}
+                <span class="p-1">{{artefact?.price}}
                   <em mat-list-icon class="ra ra-gold-bar ra-lg"></em>
                 </span>
                 Stufe:
-                <span class="p-1">{{artefact.minLevel.levelNumber}}
+                <span class="p-1">{{artefact?.minLevel.levelNumber}}
                   <em mat-list-icon class="ra ra-perspective-dice-random ra-lg"></em>
                 </span>
                 Verfügbar:
                 <span class="p-1">
-                  {{artefact.quantity}}
+                  {{artefact?.quantity}}
                 </span>
                 <br>
               </div>
               <span class="description-artefakt">{{artefact.description}}</span>
-              <div>
-                <button (click)="buyArtefact(artefact)" mat-icon-button style="padding-top: 120px"
-                        [matTooltip]="'Artefakt kaufen'"
-                        [matTooltipClass]="'tooltipMultiline'" matTooltipPosition="below">
-                  <i class="ra ra-diamond ra-3x"></i>
-                </button>
+
+              <div class="artefact-kaufen" *ngIf="user?.level >= artefact?.minLevel && user?.gold > artefact.price">
+                <button (click)="buyArtefact(artefact)" mat-button>Kaufen für {{artefact.price}} &nbsp;Gold</button>
               </div>
-              <div style="padding-top: 10px">
-                <h4>Kaufen</h4>
+              <div class="artefact-disable" *ngIf="!(user?.level >= artefact?.minLevel && user?.gold > artefact.price)">
+                <button mat-stroked-button disabled>Kaufen für {{artefact.price}} &nbsp;Gold</button>
               </div>
             </mat-card-content>
 
@@ -78,7 +61,7 @@
         </swiper>
       </mat-card>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3" style="padding-left: 0">
       <mat-card class="marktplatz">
         <mat-card-content>
           <app-highscore [leaderboard]="leaderboard"></app-highscore>

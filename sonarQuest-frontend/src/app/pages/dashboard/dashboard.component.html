@@ -2,34 +2,34 @@
   <div>
     <div class="row">
 
-      <div class="col-sm-9">
+      <div class="col-sm-9" style="padding-right: 0">
 
         <div class="row">
           <!-- FORTSCHRITT-->
-          <div class="col-8 col-sm-6">
-                  <app-progress></app-progress>
-             </div>
+          <div class="col-8 col-sm-6" style="padding-right: 0;padding-left: 0">
+            <app-progress></app-progress>
+          </div>
 
 
           <!--AVATAR-->
-          <div class="col-8 col-sm-6">
+          <div class="col-8 col-sm-6" style="padding-left: 0;">
             <app-avatar></app-avatar>
           </div>
         </div>
 
         <!--      QUEST UND RAIDS-->
-        <mat-card class="mat-card-dashboard">
+        <mat-card>
           <mat-card-content>
             <div>
               <mat-tab-group>
                 <mat-tab label="Quest">
-                  <div class="mat-card-dashboard">
-                    <app-available-quests></app-available-quests>
+                  <div>
+                    <app-available-quests style="box-shadow: none"></app-available-quests>
                   </div>
 
                 </mat-tab>
                 <mat-tab label="Raid">
-                  <div class="mat-card-dashboard">
+                  <div>
 
                     <app-raids-page></app-raids-page>
                   </div>
@@ -43,7 +43,7 @@
 
       <!--HIGHSCORE-->
 
-      <div class="col-8 col-sm-3">
+      <div class="col-8 col-sm-3" style="padding-left: 0">
         <mat-card class="highscore">
 
           <div>

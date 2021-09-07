@@ -15,6 +15,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Quest} from '../../../../Interfaces/Quest';
 import {ViewAvailableQuestComponent} from './components/view-available-quest/view-available-quest.component';
 import {World} from '../../../../Interfaces/World';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-available-quests',
@@ -23,6 +24,7 @@ import {World} from '../../../../Interfaces/World';
 })
 export class AvailableQuestsComponent implements OnInit, OnDestroy {
   subscriptionList: Subscription[] = [];
+  checked = false;
 
   availableQuests: Quest[];
   columns: ITdDataTableColumn[] = [
@@ -53,7 +55,8 @@ export class AvailableQuestsComponent implements OnInit, OnDestroy {
     private _dataTableService: TdDataTableService,
     private participationService: ParticipationService,
     private translateService: TranslateService,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    private router: Router) {
   }
 
   ngOnInit() {

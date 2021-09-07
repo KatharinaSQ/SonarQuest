@@ -1,5 +1,5 @@
-<mat-card *ngIf="!currentWorld?.usequestcards">
-  <mat-slide-toggle class="useQuestCards" (click)="toggleUsequestcards(currentWorld)">Quest Ansicht</mat-slide-toggle>
+<mat-slide-toggle class="useQuestCards" (click)="toggleUsequestcards(currentWorld)">Quest Ansicht</mat-slide-toggle>
+<div *ngIf="!currentWorld?.usequestcards">
   <mat-card-content>
     <div layout-padding>
       <h2>{{"QUEST_PAGE.AVAILABLE_QUESTS_FOR_WORLD"| translate}}
@@ -38,11 +38,10 @@
       </td-paging-bar>
     </div>
   </mat-card-content>
-</mat-card>
+</div>
 
 
-<mat-card *ngIf="currentWorld?.usequestcards">
-  <mat-slide-toggle class="useQuestCards" (click)="toggleUsequestcards(currentWorld)">Quest Ansicht</mat-slide-toggle>
+<div *ngIf="currentWorld?.usequestcards">
   <mat-card-content>
     <div align="center" *ngIf="currentWorld?.name">
       <h2>
@@ -100,4 +99,4 @@
     </div>
 
   </mat-card-content>
-</mat-card>
+</div>

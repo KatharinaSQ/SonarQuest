@@ -47,6 +47,28 @@ mat-toolbar.mat-toolbar.mat-primary i.navlist.mat-list-icon {
   color: white !important;
 }
 
+.light .mat-card-dashboard {
+  /*  box-shadow: 0 0 lightgrey, -0.2em 0 0.4em grey !important;
+    background-color: rgb(156, 125, 125) !important;*/
+  background-color: lightgrey !important;
+  /*  background-color: #6c757d !important;*/
+}
+
+.dark .mat-card-dashboard {
+  box-shadow: 0 0 lightgrey, -0.2em 0 0.4em grey !important;
+  /*  background-color: rgb(156, 125, 125) !important;*/
+  background-color: grey !important;
+  /*  background-color: #05052d !important;*/
+}
+
+.light .questlog-quest-image {
+  background-color: lightgrey !important;
+}
+
+.dark .questlog-quest-image {
+  background-color: grey !important;
+}
+
 .dark mat-card-subtitle {
   color: rgba(255, 255, 255, 1) !important;
 }
@@ -148,14 +170,14 @@ mat-option img {
 
 .background {
   width: 100%;
-/*  height: 100%;*/
+  /*  height: 100%;*/
   background-size: 0; /*20%*/
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: right bottom;
   position: absolute;
   top: 1rem;
-  left: 1rem;
+  left: 0;
   z-index: 0;
 }
 

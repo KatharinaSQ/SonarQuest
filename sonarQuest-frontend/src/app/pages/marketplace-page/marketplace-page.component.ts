@@ -41,6 +41,7 @@ export class MarketplacePageComponent implements OnInit {
 
   user: User;
   userArtefacts: Artefact[]
+  disabled: boolean = false;
 
   filteredData: any[];
   filteredTotal: number;
@@ -115,9 +116,8 @@ export class MarketplacePageComponent implements OnInit {
     this.subscribtion();
   }
 
-  subscribtion(){
 
-
+  subscribtion() {
     this.artefactService.artefactsforMarkteplace$.subscribe(artefacts => {
       this.artefacts = artefacts;
       this.filter();
@@ -131,6 +131,7 @@ export class MarketplacePageComponent implements OnInit {
       })
     }
   }
+
 
   protected createSkillsList(artefact: any) {
     const skillnames = artefact.skills.map(skill => skill.name);

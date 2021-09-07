@@ -2,18 +2,19 @@
     <img [src]="monsterImage" alt="monster">
     <div class="monster-info">
         <mat-card class="monster-info-heading rounded-top p-1">
-            <h2>{{monsterName}}</h2>
-        </mat-card>
-        <div class="monster-info-healthbar-container rounded-bottom p-1">
+          <h2>{{monsterName}}</h2>
+
+          <div class="monster-info-healthbar-container rounded-bottom p-1">
             <div class="monster-info-healthbar rounded"
-                matTooltip="Monster {{monsterName }} zu {{monsterDamagedProgress}}% besiegt">
-                <div class="monster-info-health pr-2" [style.width]="monsterProgressStyleWidth"></div>
+                 matTooltip="Monster {{monsterName }} zu {{monsterDamagedProgress}}% besiegt">
+              <div class="monster-info-health pr-2" [style.width]="monsterProgressStyleWidth"></div>
             </div>
-        </div>
-        <mat-card class="monster-info-heading rounded-top p-1" matTooltip="Belohnung wird anteilig (nach XP) verteilt!">
+          </div>
+          <div class="monster-info-heading rounded-top p-1" matTooltip="Belohnung wird anteilig (nach XP) verteilt!">
             Belohnung:
             <i mat-list-icon class="ra ra-gold-bar ra-lg"></i><span class="p-1">{{monster?.gold}}</span>
             <i mat-list-icon class="ra ra-perspective-dice-random ra-lg"></i><span class="p-1">{{monster?.xp}}</span>
+          </div>
         </mat-card>
     </div>
 </div>

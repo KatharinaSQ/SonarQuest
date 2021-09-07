@@ -97,19 +97,35 @@
     </div>
   </mat-nav-list>
   <div td-toolbar-content layout="row" flex>
-    <div class="vertical-align">{{determinePageTitle(router.url)}}</div>
-    <button (click)="navList.toggle()">toggle</button>
+
+
+    <button mat-icon-button *ngIf="isExpanded" class="material-icons-toggle" (click)="navList.toggle(); toggleMenu()">
+      chevron_right
+
+    </button>
+    <button mat-icon-button *ngIf="!isExpanded" class="material-icons-toggle" (click)="navList.toggle(); toggleMenu()">
+      chevron_left
+    </button>
+    <div style="padding-top: 4px" class="vertical-align">{{determinePageTitle(router.url)}}</div>
     <div flex></div>
     <div class="username-toolbar vertical-align">
       <button *ngIf="user" mat-icon-button routerLink="/{{myAvatarUrl}}"
               [matTooltip]="'APP_COMPONENT.USER_PROFILE' | translate"
               [matTooltipClass]="'tooltipMultiline'"
               matTooltipPosition="below">
+
         <mat-icon>person</mat-icon>
-        <span>{{user?.username}}</span>
+        <img [src]="img">
+        <span>{{user?.username}}&nbsp;&nbsp;</span>
+        <span>&nbsp;{{user?.gold}}</span>
+        <i class="ra ra-gold-bar ra-lg"></i>
+        <span>&nbsp;{{user?.level.levelNumber}}</span>
+        <i class="ra ra-perspective-dice-random ra-lg"></i>
+
+
       </button>
     </div>
-    <div flex="5"></div>
+    <div flex="10"></div>
     <div class="lightning-login-align">
 
       <button mat-icon-button (click)="clickToggleDesign()"

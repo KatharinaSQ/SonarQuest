@@ -19,6 +19,7 @@ export class MyAvatarPageComponent implements OnInit {
   public imageToShow: any = "";
   public user: User;
 
+
   constructor(private userService: UserService,
               private dialog: MatDialog,
               private imageService: ImageService) {

@@ -15,6 +15,7 @@ import {EventService} from 'app/services/event.service';
 import {MatSidenav} from '@angular/material/sidenav';
 import {MatDialog} from '@angular/material';
 import {RulesComponent} from './rules/rules.component';
+import {ImageService} from '../../services/image.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -25,7 +26,7 @@ export class MainLayoutComponent implements OnInit {
 
 
   element: HTMLElement;
-
+  public toggle = false;
   public currentWorld: World = null;
   public worlds: World[];
   public pageNames: any;
@@ -61,6 +62,7 @@ export class MainLayoutComponent implements OnInit {
   public isDashboardVisible: boolean;
   public isRulesVisible: boolean;
   public isExpanded = false;
+  public img: any = '';
 
   public body = <HTMLScriptElement><any>document.getElementsByTagName('body')[0];
 
@@ -79,7 +81,8 @@ export class MainLayoutComponent implements OnInit {
     private permissionService: PermissionService,
     private userService: UserService,
     private eventService: EventService,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    private imageService: ImageService) {
   }
 
   protected logout(): void {
@@ -353,6 +356,12 @@ export class MainLayoutComponent implements OnInit {
   decrease() {
     this.sidenavWidth = 4;
     console.log('decrease sidenav width');
+  }
+
+  private getAvatar() {
+    this.userService.getImage().subscribe((blob) => {
+      this.imageService.createImageFromBlob(blob).subscribe(image => this.img = image);
+    });
   }
 
 
