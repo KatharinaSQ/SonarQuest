@@ -1,0 +1,34 @@
+<mat-card class="avatar-dashboard">
+  <mat-card-content>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="avatar">
+            <img [src]="img" alt="The image of your avatar.">
+          </div>
+
+        </div>
+        <div class="col">
+          <div style="text-align: center">
+            <h4>{{user?.username}} </h4>
+            <h6>{{user?.avatarClass?.name}} </h6>
+            <h6> Level: {{user?.level?.levelNumber}}</h6>
+            <mat-progress-bar flex mode="determinate" [value]="XPpercent"></mat-progress-bar>
+          </div>
+
+          <br>
+          <div class="row">
+            <h6>XP: {{user?.xp}}</h6>
+            <div class="rechts-ausrichten">
+              <h6>Gold: {{user?.gold}}</h6>
+              <div layout="row">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,12 @@
+
+.chartjs-render-monitor {
+  max-height: 180px;
+  max-width: 360px;
+
+}
+
+.progress-card {
+  height: 210px;
+  margin-top: 20px;
+  margin-left: 20px;
+}

@@ -1,0 +1,18 @@
+.avatar img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+}
+
+.rechts-ausrichten {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.avatar-dashboard {
+  justify-content: center;
+  margin-top: 20px;
+  height: 210px;
+
+}
+

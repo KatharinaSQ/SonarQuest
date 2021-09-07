@@ -1,0 +1,16 @@
+<mat-card class="progress-card">
+  <mat-card-content>
+    <div>
+      <div class="chartjs-render-monitor">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+        >
+        </canvas>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

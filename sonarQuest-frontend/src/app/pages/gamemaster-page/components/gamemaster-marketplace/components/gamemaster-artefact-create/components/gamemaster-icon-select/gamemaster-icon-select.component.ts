@@ -9,7 +9,7 @@ import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class GamemasterIconSelectComponent implements OnInit {
-
+//Bilder von Unsplash
   images = ['assets/images/artefact/Affe.jpg', 'assets/images/artefact/Affe.jpg', 'assets/images/quest/hero1.jpg'];
   selectedImage: string;
   icons = ['ra-arcane-mask', 'ra-all-for-one', 'ra-anvil', 'ra-archer', 'ra-archery-target', 'ra-arena', 'ra-arrow-cluster',

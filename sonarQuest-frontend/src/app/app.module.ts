@@ -131,8 +131,6 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {RulesComponent} from './layouts/main-layout/rules/rules.component';
 import {MatRadioModule} from '@angular/material/radio';
-import {GamemasterArtefactPictureSelectComponent} from './pages/gamemaster-page/components/gamemaster-marketplace/components/gamemaster-artefact-create/components/gamemaster-artefact-picture-select/gamemaster-artefact-picture-select.component';
-
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -207,7 +205,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ShowArtefactComponent,
     AvatarComponent,
     RulesComponent,
-    GamemasterArtefactPictureSelectComponent
   ],
   entryComponents: [
     EditWorldComponent,
