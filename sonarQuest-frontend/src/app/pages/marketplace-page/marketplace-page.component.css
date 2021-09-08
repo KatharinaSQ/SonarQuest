@@ -75,11 +75,12 @@
 .artefact-kaufen {
   background-color: green;
   border-radius: 10%;
-  bottom: 35px;
+  bottom: 45px;
   position: absolute;
 }
 
 .artefact-disable {
   position: absolute;
-  bottom: 35px;
+  bottom: 45px;
 }
+

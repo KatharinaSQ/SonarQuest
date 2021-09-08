@@ -115,14 +115,13 @@
               matTooltipPosition="below">
 
         <mat-icon>person</mat-icon>
-        <img [src]="img">
         <span>{{user?.username}}&nbsp;&nbsp;</span>
+        <span *ngIf="user.gold && user.level != null">
         <span>&nbsp;{{user?.gold}}</span>
         <i class="ra ra-gold-bar ra-lg"></i>
         <span>&nbsp;{{user?.level.levelNumber}}</span>
         <i class="ra ra-perspective-dice-random ra-lg"></i>
-
-
+        </span>
       </button>
     </div>
     <div flex="10"></div>

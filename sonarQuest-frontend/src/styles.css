@@ -176,7 +176,7 @@ mat-option img {
   background-attachment: fixed;
   background-position: right bottom;
   position: absolute;
-  top: 1rem;
+  top: 0;
   left: 0;
   z-index: 0;
 }

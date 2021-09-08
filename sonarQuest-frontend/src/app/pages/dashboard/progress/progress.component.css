@@ -7,6 +7,6 @@
 
 .progress-card {
   height: 210px;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: 10px;
+  /*  margin-left: 0px;*/
 }

@@ -100,11 +100,13 @@ export class MainLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.userService.user$.subscribe(user => {
-        this.user = user;
-        this.updateMenu();
-        this.susbcribeWorlds();
-        this.setDesign();
-        this.subscribeUnseenEvents();
+      this.user = user;
+      this.user.gold = user.gold;
+      this.user.level = user.level;
+      this.updateMenu();
+      this.susbcribeWorlds();
+      this.setDesign();
+      this.subscribeUnseenEvents();
     });
     this.setPreDesign();
     this.setBackground();

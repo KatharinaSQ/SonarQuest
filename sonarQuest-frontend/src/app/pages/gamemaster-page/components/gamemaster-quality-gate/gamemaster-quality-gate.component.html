@@ -18,7 +18,7 @@
       <mat-select placeholder="Monster wählen" [(ngModel)]="raid.monsterImage">
         <mat-option *ngFor="let image of images" [value]="image.src">
           <img [src]="image.src">
-          <span>{{image.name}}</span>
+          <span>{{image?.name}}</span>
         </mat-option>
       </mat-select>
     </div>

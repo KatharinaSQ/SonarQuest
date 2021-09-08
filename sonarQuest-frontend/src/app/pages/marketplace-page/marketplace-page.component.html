@@ -19,7 +19,7 @@
       <mat-card class="marktplatz ">
 
         <swiper [config]="swiperConfig" [index]="slideIndex">
-          <div class="cards-container" *ngFor="let artefact of artefacts">
+          <div class="cards-container" *ngFor="let artefact of artefacts" #currentArtefact>
             <mat-card-content class=" d-flex flex-column align-items-center">
 
                 <span>
@@ -50,10 +50,12 @@
               <span class="description-artefakt">{{artefact.description}}</span>
 
               <div class="artefact-kaufen" *ngIf="user?.level >= artefact?.minLevel && user?.gold > artefact.price">
-                <button (click)="buyArtefact(artefact)" mat-button>Kaufen für {{artefact.price}} &nbsp;Gold</button>
+                <button (click)="buyArtefact(artefact)" mat-stroked-button>Kaufen für {{artefact.price}} <em
+                  mat-list-icon class="ra ra-gold-bar ra-lg"></em></button>
               </div>
               <div class="artefact-disable" *ngIf="!(user?.level >= artefact?.minLevel && user?.gold > artefact.price)">
-                <button mat-stroked-button disabled>Kaufen für {{artefact.price}} &nbsp;Gold</button>
+                <button [matTooltip]="'Nicht genug Gold oder die Stufe nicht erreicht'" mat-stroked-button disabled>
+                  Kaufen für {{artefact.price}} &nbsp; <em mat-list-icon class="ra ra-gold-bar ra-lg"></em></button>
               </div>
             </mat-card-content>
 

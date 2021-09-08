@@ -7,7 +7,7 @@ import {
 } from '@covalent/core';
 import {Artefact} from '../../Interfaces/Artefact';
 import {ArtefactService} from '../../services/artefact.service';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {User} from '../../Interfaces/User';
 import {UserService} from '../../services/user.service';
 import {MatDialog} from '@angular/material';
@@ -22,8 +22,7 @@ import {WorldService} from '../../services/world.service';
   templateUrl: './marketplace-page.component.html',
   styleUrls: ['./marketplace-page.component.css']
 })
-export class MarketplacePageComponent implements OnInit {
-
+export class MarketplacePageComponent implements OnInit, OnChanges {
   artefacts: Artefact[];
   my_artefacts_id: number[] = [];
   public level: number;
@@ -41,7 +40,7 @@ export class MarketplacePageComponent implements OnInit {
 
   user: User;
   userArtefacts: Artefact[]
-  disabled: boolean = false;
+  disabled = false;
 
   filteredData: any[];
   filteredTotal: number;
@@ -81,26 +80,17 @@ export class MarketplacePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.translateService.get('ARTEFACT').subscribe((col_names) => {
-      this.columns = [
-        {name: 'icon', label: ''},
-        {name: 'name', label: col_names.NAME},
-        {name: 'price', label: col_names.PRICE},
-        {name: 'quantity', label: col_names.QUANTITY},
-        {name: 'minLevel.levelNumber', label: col_names.MIN_LEVEL},
-        {name: 'buy', label: ''}]
-    });
-
-
     const _this = this;
     this.worldService.currentWorld$.subscribe(world => {
       console.log(world);
       _this.leaderboard = world.leaderboard;
     });
     this.userService.user$.subscribe(user => {
-      this.user = user
+      _this.user = user;
+      _this.userArtefacts = user.artefacts;
       this.artefactService.getData();
-      this.userArtefacts = this.user.artefacts;
+      this.userArtefacts = user.artefacts;
+
       this.userArtefacts.map(artefact => this.my_artefacts_id.push(artefact.id));
       if (user.level) {
         this.level = user.level.levelNumber;
@@ -116,6 +106,10 @@ export class MarketplacePageComponent implements OnInit {
     this.subscribtion();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    console.log('ONCHANGES');
+  }
 
   subscribtion() {
     this.artefactService.artefactsforMarkteplace$.subscribe(artefacts => {
@@ -128,6 +122,8 @@ export class MarketplacePageComponent implements OnInit {
     if (artefact != null && this.user != null) {
       this.artefactService.buyArtefact(artefact).then(() => {
         this.artefactService.getData();
+        this.userArtefacts.push(artefact);
+        const _this = this;
       })
     }
   }
